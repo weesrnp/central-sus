@@ -18,4 +18,4 @@ Catálogo de arquivos DATASUS com filtros, seleção de UF, versões anteriores 
 Central SUS, vinculado à marca TI Saúde. Perfil base do kit, com adaptação de cores solicitada pelo responsável: claro, moderno e elegante. Logo próprio e movimento respeitando acessibilidade. Referências: Uiverse, Aceternity, Mobbin, React Bits e 21st.dev.
 
 ## Evidence on Hand
-README, config/catalog.php, código e site https://sus-systems.vercel.app. Kit original preservado em design-system/. Presença de um município padrão não constitui endosso institucional.
+README, config/catalog.php, código e site https://central-sus.vercel.app. Kit original preservado em design-system/. Presença de um município padrão não constitui endosso institucional.

@@ -21,6 +21,8 @@ Nome público atualizado; identificadores internos e URL do repositório preserv
 - [Auditoria de interface e referências](docs/AUDITORIA-CENTRAL-SUS.md)
 - [Capturas da interface](docs/screenshots/)
 
+Acesse o site: **[central-sus.vercel.app](https://central-sus.vercel.app/)**.
+
 ## Visão Geral
 
 O **Central SUS** é uma plataforma moderna, leve e open-source para consultar, auditar e baixar dados públicos oficiais do DataSUS (Ministério da Saúde do Brasil).
