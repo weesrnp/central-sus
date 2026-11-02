@@ -8,6 +8,8 @@ import { escapeHtml } from './table.js';
 let commandList = [];
 let selectedIndex = 0;
 let onSelectCallback = null;
+let previousFocus = null;
+let previousInert = [];
 
 export function initCommandPalette(catalogAreas, onSelect) {
   onSelectCallback = onSelect;
@@ -23,6 +25,11 @@ export function initCommandPalette(catalogAreas, onSelect) {
 
   // Atalho global Ctrl+K / Cmd+K
   window.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && !backdrop.hidden) {
+      e.preventDefault();
+      input.focus();
+      return;
+    }
     if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
       e.preventDefault();
       if (backdrop.hasAttribute('hidden')) {
@@ -74,10 +81,10 @@ export function initCommandPalette(catalogAreas, onSelect) {
 function buildCommandList(areas) {
   commandList = [
     {
-      title: 'Catálogo Geral (Início)',
-      subtitle: 'Voltar para a visão inicial do catálogo FTP',
+      title: 'Início do Central SUS',
+      subtitle: 'Ver todos os sistemas e materiais disponíveis',
       tag: 'Navegação',
-      action: { type: 'nav', group: 'SIA', sub: 'BPA' }
+      action: { type: 'nav', special: 'home' }
     },
     {
       title: 'SIGTAP — Consulta e Comparativo',
@@ -128,18 +135,35 @@ export function openPalette() {
   const input = document.getElementById('commandPaletteInput');
   if (!backdrop || !input) return;
 
+  if (!backdrop.hidden) return;
+  if (document.getElementById('appLayout').classList.contains('sidebar-mobile-open')) {
+    document.getElementById('btnCloseSidebarMobile').click();
+  }
+  previousFocus = document.activeElement;
+  previousInert = [...document.querySelectorAll('#appLayout, #appTopbar')].map(el => [el, el.inert]);
+  previousInert.forEach(([el]) => { el.inert = true; });
   backdrop.removeAttribute('hidden');
+  backdrop.setAttribute('aria-hidden', 'false');
+  input.setAttribute('role', 'combobox');
+  input.setAttribute('aria-controls', 'commandPaletteResults');
+  input.setAttribute('aria-expanded', 'true');
+  input.setAttribute('aria-autocomplete', 'list');
   input.value = '';
   selectedIndex = 0;
   renderResults('');
-  setTimeout(() => input.focus(), 50);
+  input.focus();
 }
 
 export function closePalette() {
   const backdrop = document.getElementById('commandPaletteBackdrop');
   if (backdrop) {
     backdrop.setAttribute('hidden', '');
+    backdrop.setAttribute('aria-hidden', 'true');
   }
+  document.getElementById('commandPaletteInput')?.setAttribute('aria-expanded', 'false');
+  previousInert.forEach(([el, wasInert]) => { el.inert = wasInert; });
+  previousInert = [];
+  if (previousFocus?.isConnected) previousFocus.focus();
 }
 
 function renderResults(query) {
@@ -157,12 +181,13 @@ function renderResults(query) {
   selectedIndex = 0;
 
   if (filtered.length === 0) {
+    document.getElementById('commandPaletteInput')?.removeAttribute('aria-activedescendant');
     container.innerHTML = `<div class="state-box">Nenhum resultado encontrado para "${escapeHtml(query)}".</div>`;
     return;
   }
 
   container.innerHTML = filtered.map((item, idx) => `
-    <div class="cmd-item ${idx === 0 ? 'selected' : ''}" data-idx="${idx}">
+    <div class="cmd-item ${idx === 0 ? 'selected' : ''}" data-idx="${idx}" id="cmd-option-${idx}" role="option" aria-selected="${idx === 0}">
       <div class="cmd-item-left">
         <span class="cmd-item-title">${escapeHtml(item.title)}</span>
         <span class="cmd-item-sub" style="font-size:0.75rem; color:var(--text-muted);">${escapeHtml(item.subtitle)}</span>
@@ -170,6 +195,7 @@ function renderResults(query) {
       <span class="cmd-item-tag">${escapeHtml(item.tag)}</span>
     </div>
   `).join('');
+  document.getElementById('commandPaletteInput')?.setAttribute('aria-activedescendant', 'cmd-option-0');
 
   container.querySelectorAll('.cmd-item').forEach((el, idx) => {
     el.addEventListener('click', () => {
@@ -186,7 +212,9 @@ function updateSelected(items) {
   items.forEach((item, idx) => {
     const isSel = idx === selectedIndex;
     item.classList.toggle('selected', isSel);
+    item.setAttribute('aria-selected', String(isSel));
     if (isSel) {
+      document.getElementById('commandPaletteInput')?.setAttribute('aria-activedescendant', item.id);
       item.scrollIntoView({ block: 'nearest' });
     }
   });

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="SUS-systems Banner" width="100%">
+  <img src="assets/banner.svg" alt="Central SUS — arquivos, tabelas e remessas" width="100%">
 </p>
 
 <p align="center">
@@ -11,9 +11,19 @@
 
 ---
 
+## Identidade Central SUS
+
+Nome público atualizado; identificadores internos e URL do repositório preservados. Nova página inicial com acesso a todos os 18 subgrupos, busca global, SIGTAP e remessas.
+
+- [Decisões visuais e exceções ao perfil base](DESIGN.md)
+- [Logo e paleta](assets/central-sus-identidade.png)
+- [Validação das fontes e downloads](docs/VALIDACAO-FONTES.md)
+- [Auditoria de interface e referências](docs/AUDITORIA-CENTRAL-SUS.md)
+- [Capturas da interface](docs/screenshots/)
+
 ## Visão Geral
 
-O **SUS-systems 3.0** é uma plataforma moderna, leve e open-source para consultar, auditar e baixar dados públicos oficiais do DataSUS (Ministério da Saúde do Brasil).
+O **Central SUS** é uma plataforma moderna, leve e open-source para consultar, auditar e baixar dados públicos oficiais do DataSUS (Ministério da Saúde do Brasil).
 
 Reescrito em **PHP 8.2+ / 8.3 sem frameworks pesados nem dependências externas**, o sistema converte protocolos legados (FTP passivo RFC 959 com listagens IIS e Unix) em fluxos HTTP/HTTPS modernos e estruturados. Permite streaming em tempo real de grandes volumes de dados sem estourar memória, além de incluir um motor de consulta e diff posicional para a tabela unificada **SIGTAP** e consulta nativa de remessas mensais do SIA diretamente via FTP LogCarga (sem depender de proxies externos).
 
@@ -177,7 +187,7 @@ SUS-systems/
 
 ## Conformidade, LAI e LGPD
 
-O **SUS-systems** consome e indexa unicamente informações e bases de dados abertas do DataSUS, em conformidade com:
+O **Central SUS** consome e indexa unicamente informações e bases de dados abertas do DataSUS, em conformidade com:
 - **Lei de Acesso à Informação (Lei nº 12.527/2011)**: Amplo acesso aos dados públicos de saúde;
 - **Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD)**: Tratamento exclusivo de dados não identificáveis e estatísticas públicas anonimizadas.
 

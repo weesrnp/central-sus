@@ -100,9 +100,6 @@ $areas = $catalog['areas'] ?? [];
 
   <!-- Rodapé compacto da sidebar -->
   <div class="sidebar-footer">
-    <div class="sidebar-status-pill" title="Status da conexão do gateway FTP">
-      <span class="status-pulse-dot" aria-hidden="true"></span>
-      <span class="status-text">Gateway DataSUS Ativo</span>
-    </div>
+    <a class="sidebar-home-link" href="#/inicio">Central SUS <span>Por Wees Dev</span></a>
   </div>
 </aside>

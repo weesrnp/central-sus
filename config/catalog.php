@@ -143,7 +143,7 @@ return [
                                 'code' => 'BPA Consolidado (BPA-C) & Individualizado (BPA-I)',
                                 'title' => 'Exportação magnética com validação obrigatória de CNS/CPF e CBO',
                                 'tag' => 'Faturamento',
-                                'url' => 'https://wiki.saude.gov.br/siasus/',
+                                'url' => 'https://wiki.saude.gov.br/sia/index.php/Portal_do_SIA',
                             ],
                         ],
                     ],
@@ -535,7 +535,7 @@ return [
                                 'code' => 'Calendário Nacional de Vacinação',
                                 'title' => 'Esquema vigente do PNI no portal do Ministério da Saúde',
                                 'tag' => 'PNI',
-                                'url' => 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/calendario-nacional-de-vacinacao',
+                                'url' => 'https://www.gov.br/saude/pt-br/vacinacao/calendario',
                             ],
                             [
                                 'code' => 'SISVAN Web',

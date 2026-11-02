@@ -4,8 +4,8 @@ declare(strict_types=1);
 $env = static fn (string $key, mixed $default = null): mixed => ($v = getenv($key)) === false ? $default : $v;
 
 return [
-    'name'    => 'SUS-systems',
-    'version' => '3.0.0',
+    'name'    => 'Central SUS',
+    'version' => '3.1.0',
     'debug'   => filter_var($env('APP_DEBUG', false), FILTER_VALIDATE_BOOL),
 
     'cache' => [

@@ -4,11 +4,12 @@ declare(strict_types=1);
 $currentYear = (int) date('Y');
 ?>
 <div class="workspaces-container">
+  <?php require SUS_ROOT . '/templates/partials/dashboard.php'; ?>
 
   <!-- ======================================================== -->
   <!-- WORKSPACE 1: CATÁLOGO GERAL (ARQUIVOS, TABELAS E NORMAS) -->
   <!-- ======================================================== -->
-  <section class="ws-panel active" id="ws-catalog" role="tabpanel" aria-labelledby="tabCatalog">
+  <section class="ws-panel" id="ws-catalog" role="region" aria-labelledby="tabCatalog">
     <!-- O conteúdo dinâmico do subgrupo (título, FTP, normativas, tabelas) é injetado aqui -->
     <div id="catalogDynamicContent" class="catalog-content-area">
       <!-- Skeleton inicial da primeira pintura -->
@@ -28,7 +29,7 @@ $currentYear = (int) date('Y');
   <!-- ======================================================== -->
   <!-- WORKSPACE 2: SIGTAP EXPLORER & COMPARATIVO DE COMPETÊNCIA -->
   <!-- ======================================================== -->
-  <section class="ws-panel" id="ws-sigtap" role="tabpanel" aria-labelledby="tabSigtap">
+  <section class="ws-panel" id="ws-sigtap" role="region" aria-labelledby="tabSigtap">
     <div class="content-header">
       <div class="content-heading">
         <div class="breadcrumb-trail">
@@ -36,7 +37,7 @@ $currentYear = (int) date('Y');
           <span class="crumb-sep">/</span>
           <span class="crumb-current">SIGTAP</span>
         </div>
-        <h1 class="content-title">SIGTAP — Consulta e Comparativo de Competências</h1>
+        <h1 class="content-title">Consulte a tabela SIGTAP</h1>
         <div class="ftp-url-bar" title="URL do diretório FTP da Tabela Unificada">
           <span class="ftp-protocol">ftp://</span>ftp2.datasus.gov.br/pub/sistemas/tup/downloads/
         </div>
@@ -49,7 +50,7 @@ $currentYear = (int) date('Y');
     <!-- Barra de Controles e Filtros do SIGTAP -->
     <div class="controls-card">
       <div class="controls-header">
-        <span class="controls-title">Pesquisa na Tabela Unificada Vigente</span>
+        <span class="controls-title">Encontre um procedimento</span>
       </div>
 
       <div class="controls-grid">
@@ -68,10 +69,24 @@ $currentYear = (int) date('Y');
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="search" id="sigtapQuery" class="field-control" placeholder="Nome ou código — acentos opcionais" autocomplete="off" title="Busca por código ou nome (acentos opcionais)">
+            <input type="search" id="sigtapQuery" class="field-control" placeholder="Ex.: consulta ou 0301010072" autocomplete="off" title="Busca por código ou nome (acentos opcionais)">
           </div>
         </div>
 
+        <div class="field-group field-action">
+          <button type="button" class="btn-primary btn-search-sigtap" id="btnSigtapSearch">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>Pesquisar</span>
+          </button>
+        </div>
+      </div>
+
+      <details class="controls-disclosure" id="sigtapAdvanced">
+        <summary>Filtros adicionais <span id="sigtapFiltersStatus"></span></summary>
+        <div class="advanced-grid">
         <div class="field-group">
           <label for="sigtapGrupo" class="field-label">Grupo</label>
           <select id="sigtapGrupo" class="field-control">
@@ -102,21 +117,12 @@ $currentYear = (int) date('Y');
           </select>
         </div>
 
-        <div class="field-group field-action">
-          <button type="button" class="btn-primary btn-search-sigtap" id="btnSigtapSearch">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <span>Pesquisar</span>
-          </button>
         </div>
-      </div>
+      </details>
 
       <!-- Divisor e Linha de Comparativo (Diff) -->
-      <div class="diff-section-divider">
-        <span class="divider-text">Comparativo entre Duas Competências (Diff Oficial)</span>
-      </div>
+      <details class="controls-disclosure" id="sigtapCompare">
+        <summary>Comparar competências</summary>
 
       <div class="diff-controls-row">
         <div class="field-group">
@@ -133,10 +139,11 @@ $currentYear = (int) date('Y');
               <line x1="15" y1="15" x2="21" y2="21"></line>
               <line x1="4" y1="4" x2="9" y2="9"></line>
             </svg>
-            <span>Calcular Reajustes &amp; Alterações</span>
+            <span>Comparar competências</span>
           </button>
         </div>
       </div>
+      </details>
     </div>
 
     <!-- Resultados do SIGTAP (Tabela de Procedimentos ou Comparativo Diff) -->
@@ -146,7 +153,7 @@ $currentYear = (int) date('Y');
   <!-- ======================================================== -->
   <!-- WORKSPACE 3: REMESSAS SIA (LOGCARGA MUNICIPAL) -->
   <!-- ======================================================== -->
-  <section class="ws-panel" id="ws-remessa" role="tabpanel" aria-labelledby="tabRemessa">
+  <section class="ws-panel" id="ws-remessa" role="region" aria-labelledby="tabRemessa">
     <div class="content-header">
       <div class="content-heading">
         <div class="breadcrumb-trail">
@@ -154,7 +161,7 @@ $currentYear = (int) date('Y');
           <span class="crumb-sep">/</span>
           <span class="crumb-current">SIA / LogCarga</span>
         </div>
-        <h1 class="content-title">Remessas do SIA — Acompanhamento de Processamento (LogCarga)</h1>
+        <h1 class="content-title">Acompanhe suas remessas SIA</h1>
         <div class="ftp-url-bar" title="URL do diretório FTP de logs de carga do SIA">
           <span class="ftp-protocol">ftp://</span>arpoador.datasus.gov.br/siasus/LogCarga/
         </div>
@@ -200,14 +207,14 @@ $currentYear = (int) date('Y');
       </form>
 
       <!-- Chips de atalho para municípios comuns -->
-      <div class="quick-ibge-row">
+      <details class="controls-disclosure quick-municipalities"><summary>Atalhos de municípios</summary><div class="quick-ibge-row">
         <span class="quick-ibge-label">Atalhos rápidos:</span>
         <button type="button" class="quick-ibge-chip active" data-ibge="410965">Honório Serpa - PR (410965)</button>
         <button type="button" class="quick-ibge-chip" data-ibge="410690">Curitiba - PR (410690)</button>
         <button type="button" class="quick-ibge-chip" data-ibge="355030">São Paulo - SP (355030)</button>
         <button type="button" class="quick-ibge-chip" data-ibge="330455">Rio de Janeiro - RJ (330455)</button>
         <button type="button" class="quick-ibge-chip" data-ibge="310620">Belo Horizonte - MG (310620)</button>
-      </div>
+      </div></details>
     </div>
 
     <!-- Resultados do LogCarga -->

@@ -1,0 +1,181 @@
+/* TI Saúde · 1.0.0 · tokens com escopo e perfis. */
+:root, [data-hs-root] {
+  --hs-font-body: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --hs-font-display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --hs-font-mono: ui-monospace, Consolas, monospace;
+  --hs-ink: #0F172A;
+  --hs-ink-2: #334155;
+  --hs-muted: #475569;
+  --hs-surface: #FFFFFF;
+  --hs-surface-2: #F8FAFC;
+  --hs-line: #D8DFED;
+  --hs-control-line: #8492AB;
+  --hs-on-brand: #FFFFFF;
+  --hs-focus: var(--hs-brand);
+  --hs-radius-xs: 6px;
+  --hs-radius-sm: 8px;
+  --hs-radius-md: 12px;
+  --hs-radius-lg: 16px;
+  --hs-radius-full: 9999px;
+  --hs-radius-card: 16px;
+  --hs-radius-input: 12px;
+  --hs-card-padding: 24px;
+  --hs-fs-display: 32px;
+  --hs-fs-page: 24px;
+  --hs-fs-kpi: 28px;
+  --hs-fs-section: 18px;
+  --hs-fs-title: 16px;
+  --hs-fs-body: 15px;
+  --hs-fs-small: 13px;
+  --hs-fs-label: 12px;
+  --hs-fs-caption: 12px;
+  --hs-fs-control: 14px;
+  --hs-duration-fast: 150ms;
+  --hs-duration-context: 300ms;
+  --hs-ease-out: cubic-bezier(0.16,1,0.3,1);
+  --hs-shadow-sm: 0 2px 6px #0F172A0A;
+  --hs-shadow-lg: 0 8px 24px #0F172A1F;
+  --hs-ok-signal: #059669;
+  --hs-ok-bg: #ECFDF5;
+  --hs-ok-ink: #065F46;
+  --hs-ok-solid: #047857;
+  --hs-ok-on-solid: #FFFFFF;
+  --hs-warning-signal: #F59E0B;
+  --hs-warning-bg: #FFFBEB;
+  --hs-warning-ink: #92400E;
+  --hs-warning-on-signal: #451A03;
+  --hs-danger-signal: #DC2626;
+  --hs-danger-bg: #FEF2F2;
+  --hs-danger-ink: #991B1B;
+  --hs-danger-solid: #DC2626;
+  --hs-danger-on-solid: #FFFFFF;
+  --hs-nd-signal: #64748B;
+  --hs-nd-bg: #F1F5F9;
+  --hs-nd-ink: #334155;
+  --hs-nd-solid: #64748B;
+  --hs-nd-on-solid: #FFFFFF;
+  --hs-info-signal: #0891B2;
+  --hs-info-bg: #ECFEFF;
+  --hs-info-ink: #155E75;
+  --hs-maternal-bg: #F5F3FF;
+  --hs-maternal-ink: #6D28D9;
+  --hs-civic-accent: #DC2626;
+  --hs-space-1: 4px;
+  --hs-space-2: 8px;
+  --hs-space-3: 12px;
+  --hs-space-4: 16px;
+  --hs-space-5: 24px;
+  --hs-space-6: 32px;
+  --hs-space-7: 48px;
+  --hs-identity: #0F294A;
+  --hs-brand: #1D4ED8;
+  --hs-brand-hover: #1E40AF;
+  --hs-brand-strong: #1E40AF;
+  --hs-brand-bg: #EFF6FF;
+  --hs-brand-soft: #DBEAFE;
+  --hs-brand-line: #BFDBFE;
+  --hs-heading: #0F294A;
+  --hs-canvas: #F0F4F8;
+}
+[data-hs-product="base"] {
+  --hs-identity: #0F294A;
+  --hs-brand: #1D4ED8;
+  --hs-brand-hover: #1E40AF;
+  --hs-brand-strong: #1E40AF;
+  --hs-brand-bg: #EFF6FF;
+  --hs-brand-soft: #DBEAFE;
+  --hs-brand-line: #BFDBFE;
+  --hs-heading: #0F294A;
+  --hs-canvas: #F0F4F8;
+}
+[data-hs-product="hs-aps"] {
+  --hs-identity: #0F294A;
+  --hs-brand: #1D4ED8;
+  --hs-brand-hover: #1E40AF;
+  --hs-brand-strong: #1E40AF;
+  --hs-brand-bg: #EFF6FF;
+  --hs-brand-soft: #DBEAFE;
+  --hs-brand-line: #BFDBFE;
+  --hs-heading: #0F294A;
+  --hs-canvas: #F0F4F8;
+}
+[data-hs-product="imuniza"] {
+  --hs-identity: #1E40AF;
+  --hs-brand: #1E40AF;
+  --hs-brand-hover: #1E3A8A;
+  --hs-brand-strong: #1E3A8A;
+  --hs-brand-bg: #EFF6FF;
+  --hs-brand-soft: #DBEAFE;
+  --hs-brand-line: #BFDBFE;
+  --hs-heading: #172554;
+  --hs-canvas: #F0F4F8;
+  --hs-font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --hs-font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
+}
+[data-hs-product="acompanha"] {
+  --hs-identity: #4338CA;
+  --hs-brand: #4338CA;
+  --hs-brand-hover: #3730A3;
+  --hs-brand-strong: #3730A3;
+  --hs-brand-bg: #EEF2FF;
+  --hs-brand-soft: #E0E7FF;
+  --hs-brand-line: #C7D2FE;
+  --hs-heading: #1E1B4B;
+  --hs-canvas: #F3F4FC;
+  --hs-radius-card: 8px;
+  --hs-radius-input: 8px;
+}
+[data-hs-theme="dark"] {
+  --hs-canvas: #0B1220;
+  --hs-surface: #111C2F;
+  --hs-surface-2: #17243A;
+  --hs-ink: #F1F5F9;
+  --hs-ink-2: #E2E8F0;
+  --hs-muted: #CBD5E1;
+  --hs-line: #455770;
+  --hs-control-line: #7285A1;
+  --hs-heading: #E0E7FF;
+  --hs-brand: #93C5FD;
+  --hs-brand-hover: #BFDBFE;
+  --hs-brand-strong: #BFDBFE;
+  --hs-brand-bg: #172B4D;
+  --hs-brand-soft: #203C64;
+  --hs-brand-line: #4D6E9F;
+  --hs-on-brand: #0B1220;
+  --hs-ok-bg: #063D31;
+  --hs-ok-ink: #6EE7B7;
+  --hs-ok-signal: #34D399;
+  --hs-warning-bg: #422D0B;
+  --hs-warning-ink: #FCD34D;
+  --hs-warning-signal: #FBBF24;
+  --hs-danger-bg: #451A24;
+  --hs-danger-ink: #FCA5A5;
+  --hs-danger-signal: #F87171;
+  --hs-nd-bg: #243247;
+  --hs-nd-ink: #E2E8F0;
+  --hs-nd-signal: #CBD5E1;
+  --hs-info-bg: #083344;
+  --hs-info-ink: #67E8F9;
+  --hs-info-signal: #22D3EE;
+  --hs-maternal-bg: #2E1855;
+  --hs-maternal-ink: #DDD6FE;
+  --hs-shadow-sm: 0 2px 6px #00000030;
+  --hs-shadow-lg: 0 8px 24px #00000060;
+}
+[data-hs-theme="dark"][data-hs-product="acompanha"] {
+  --hs-brand: #A5B4FC;
+  --hs-brand-hover: #C7D2FE;
+  --hs-brand-strong: #C7D2FE;
+  --hs-brand-bg: #20204D;
+  --hs-brand-soft: #303065;
+  --hs-brand-line: #6565A0;
+}
+[data-hs-density="compact"] {
+  --hs-fs-page: 16px;
+  --hs-fs-section: 13px;
+  --hs-fs-body: 13px;
+  --hs-fs-small: 12px;
+  --hs-fs-control: 12px;
+  --hs-card-padding: 12px;
+}
+@media(max-width:600px){:root,[data-hs-root]{--hs-card-padding:16px}[data-hs-density="compact"]{--hs-card-padding:12px}}

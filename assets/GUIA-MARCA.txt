@@ -1,0 +1,12 @@
+Central SUS — pacote de marca
+
+Nome escolhido pelo responsável em 02/11/2026. Assinatura: Por Wees Dev.
+Símbolo C/núcleo autoral. Fonte Plus Jakarta Sans, OFL, convertida em contornos nos wordmarks SVG.
+
+Azul #1472B5; céu #EAF5FD; menta suave #E2F4EC; núcleo #45B8A3; texto #263E48; branco #FFFFFF.
+
+Use a versão negativa sobre fundos escuros. Preserve proporções e espaço livre de ao menos 8 unidades ao redor do símbolo na malha 64.
+Não aplicar cruzes, brasões ou alegar identidade oficial do Ministério. O portal é uma ferramenta independente.
+
+Arquivos: horizontal, vertical, monocromático, negativo, símbolo, favicon, PNG e prancha de cores.
+Fonte/editáveis: scripts/build_brand.py e public/assets/img. Decisões completas em DESIGN.md.

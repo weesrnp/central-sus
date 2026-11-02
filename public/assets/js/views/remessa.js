@@ -19,7 +19,7 @@ let remessaSeq = 0;
 let activeAbortController = null;
 let slowTimer = null;
 
-export function initRemessaView(force = false) {
+export function initRemessaView(force = false, lazy = false) {
   const form = document.getElementById('remessaForm');
   const chips = document.querySelectorAll('.quick-ibge-chip');
   const ibgeInput = document.getElementById('remIbgeInput');
@@ -50,7 +50,7 @@ export function initRemessaView(force = false) {
   }
 
   // Carga inicial
-  if (!lastLoadedKey || force) {
+  if (!lazy && (!lastLoadedKey || force)) {
     loadRemessas(force);
   }
 }
@@ -155,6 +155,8 @@ function statusTone(text) {
 function renderRemessaTable(container, data, ibge, ano) {
   const rows = data.rows || [];
   const ftpUrl = data.ftpUrl || LOGCARGA_FTP;
+  const knownMunicipality = [...document.querySelectorAll('.quick-ibge-chip')].find(el => el.dataset.ibge === ibge.slice(0, 6));
+  const municipalityLabel = knownMunicipality ? knownMunicipality.textContent.replace(/\s*\(\d+\)\s*$/, '').trim() : `IBGE ${ibge}`;
 
   if (rows.length === 0) {
     container.innerHTML = `
@@ -174,7 +176,8 @@ function renderRemessaTable(container, data, ibge, ano) {
     <div class="table-card">
       <div class="table-card-header">
         <div class="table-card-heading">
-          <h2 class="table-card-title">Remessas Processadas — Município IBGE ${escapeHtml(ibge)} · Ano ${escapeHtml(ano)}</h2>
+          <h2 class="table-card-title">Remessas de ${escapeHtml(municipalityLabel)} · ${escapeHtml(ano)}</h2>
+          <span class="municipality-code">Município IBGE ${escapeHtml(ibge)}</span>
           <span class="table-card-ftp">${escapeHtml(ftpUrl)}</span>
         </div>
       </div>
@@ -184,7 +187,7 @@ function renderRemessaTable(container, data, ibge, ano) {
         <span><strong class="${errCount > 0 ? 'delta-neg' : 'delta-pos'}">${formatCount(errCount)}</strong> com erro ou rejeição</span>
       </div>
 
-      <div class="table-scroll">
+      <p class="table-scroll-hint">Deslize para ver as outras colunas.</p><div class="table-scroll" role="region" tabindex="0" aria-label="Resultados — tabela com rolagem horizontal">
         <table class="data-table">
           <thead>
             <tr>

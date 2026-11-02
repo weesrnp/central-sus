@@ -35,9 +35,14 @@ return [
         $walk((new Catalog())->areas());
         assert_true($count > 0);
     },
-    'Catálogo público equivale ao JSON integral do legado Python' => static function (): void {
+    'Catálogo preserva legado exceto dois links oficiais corrigidos' => static function (): void {
         // SHA-256 do JSON compacto UTF-8 de CATALOG_AREAS e UFs ordenadas do legado.
         $json = json_encode((new CatalogController())->catalog(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
+        // URLs antigas retornaram 404/login em 02/11/2026. Todo o restante deve continuar idêntico.
+        assert_true(str_contains($json, 'https://wiki.saude.gov.br/sia/index.php/Portal_do_SIA'));
+        $json = str_replace('https://wiki.saude.gov.br/sia/index.php/Portal_do_SIA', 'https://wiki.saude.gov.br/siasus/', $json);
+        assert_true(str_contains($json, 'https://www.gov.br/saude/pt-br/vacinacao/calendario'));
+        $json = str_replace('https://www.gov.br/saude/pt-br/vacinacao/calendario', 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/calendario-nacional-de-vacinacao', $json);
         assert_same('09f46f4253bcfe67dd60e581f7067885082b98735abf43c1dfef87e36bc93a2f', hash('sha256', $json));
     },
     'Subgrupo inexistente retorna 404 e view sem seções fica pronta' => static function (): void {

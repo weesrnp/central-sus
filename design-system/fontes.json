@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-02",
+  "files": [
+    {
+      "path": "C:\\Users\\wesle\\Downloads\\TI Saude Padrão Sistemas\\Acompanha HS Analise e Nomes.dc.html",
+      "sha256": "e5fd9ef7cfdb15675c4cfaf4f931a24141f50bfd80cb2fbc8a9df4534e7b3e77",
+      "bytes": 17724
+    },
+    {
+      "path": "C:\\Users\\wesle\\Downloads\\TI Saude Padrão Sistemas\\Identidade Visual HS APS.dc.html",
+      "sha256": "ee3ff2e2366962a6d6826eaf0faed907cf96402f6c795f35e878f64365c286bf",
+      "bytes": 25030
+    },
+    {
+      "path": "C:\\Users\\wesle\\Downloads\\TI Saude Padrão Sistemas\\ImunizaHS Identidade Visual.dc.html",
+      "sha256": "998e96c0baf966a93bffe95b4972d9e4db538bf019f855580cf5bd0f4fdb4782",
+      "bytes": 24610
+    },
+    {
+      "path": "C:\\Users\\wesle\\Downloads\\TI Saude Padrão Sistemas\\ImunizaHS Sistema Visual.dc.html",
+      "sha256": "118bd58ea34b1c810bf38b8760ca11bcc5be14b457c27d9c7b2fb6fe43336bce",
+      "bytes": 31740
+    },
+    {
+      "path": "E:\\Projetos\\AcompanhaHS-Extensão\\acompanhahs-brand\\DESIGN.md",
+      "sha256": "a8137f030507aea4299377c8449671a980c65a9b45831259d0e64fa82e2e0b14",
+      "bytes": 6522
+    },
+    {
+      "path": "E:\\Projetos\\AcompanhaHS-Extensão\\docs\\BRANDING_APLICADO.md",
+      "sha256": "b8cb31d752cf061505a8ce87b512bb52caae273c2e3f678c91f936b0a82dc2a1",
+      "bytes": 8898
+    },
+    {
+      "path": "E:\\Projetos\\AcompanhaHS-Extensão\\extension\\src\\content\\acompanha.css",
+      "sha256": "1790cc246cc7bc6a6712f512eb8337fc8c8f97435dd1b3f64952e7ddda824090",
+      "bytes": 15268
+    },
+    {
+      "path": "E:\\Projetos\\AcompanhaHS-Extensão\\extension\\src\\popup\\popup.css",
+      "sha256": "919829f01fad04a0db84eb8cdb6ee19f72683e375b32277fcb2ce29d317bf79d",
+      "bytes": 2921
+    },
+    {
+      "path": "E:\\Projetos\\Sistemas-Saude\\ImunizaHS\\DESIGN.md",
+      "sha256": "bc987a512945005fc7e475b936a83be55b0a62326e1322d3608c1da6a75439c4",
+      "bytes": 20869
+    }
+  ],
+  "thread": {
+    "id": "01a19d5c-707d-75c0-b6c0-570c27d6360b",
+    "title": "Aplicar novo branding ao projeto"
+  }
+}

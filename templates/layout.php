@@ -10,24 +10,22 @@ declare(strict_types=1);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= e($title ?? 'SUS-systems — Central DataSUS, SIA, SIGTAP, CNES & e-SUS APS') ?></title>
+  <title><?= e($title ?? 'Central SUS — Arquivos, tabelas e remessas') ?></title>
   <meta name="description" content="Portal de Sistemas e Faturamento do SUS — Downloads Diretos do DataSUS, SIA, SIGTAP, CNES e e-SUS APS.">
-  <meta name="theme-color" content="#F6F7F9" id="metaThemeColor">
+  <meta name="theme-color" content="#F7F9FA" id="metaThemeColor">
 
   <!-- Ícones e Favicons -->
   <link rel="icon" href="<?= asset('img/favicon.svg') ?>" type="image/svg+xml">
-  <link rel="icon" href="<?= asset('img/favicon.ico') ?>" sizes="32x32">
   <link rel="apple-touch-icon" href="<?= asset('img/apple-touch-icon.png') ?>">
 
-  <!-- Fontes Oficiais: Plus Jakarta Sans (UI) + JetBrains Mono (Dados Técnicos / Códigos / FTP) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="<?= asset('fonts/Jakarta.woff2') ?>" as="font" type="font/woff2" crossorigin>
 
   <!-- Folha de Estilos Principal -->
   <link rel="stylesheet" href="<?= asset('css/app.css') ?>">
+  <link rel="stylesheet" href="<?= asset('css/central.css') ?>">
 </head>
 <body>
+  <a class="skip-link" href="#mainCanvas">Pular para o conteúdo</a>
 
   <!-- Barra Superior Global (56px) -->
   <?php require SUS_ROOT . '/templates/partials/topbar.php'; ?>
@@ -51,6 +49,7 @@ declare(strict_types=1);
   <!-- Modal da Busca Global (Ctrl+K) -->
   <div class="command-palette-backdrop" id="commandPaletteBackdrop" hidden aria-hidden="true">
     <div class="command-palette-modal" id="commandPaletteModal" role="dialog" aria-modal="true" aria-labelledby="cmdPaletteTitle">
+      <h2 id="cmdPaletteTitle" class="sr-only">Buscar no Central SUS</h2>
       <div class="command-palette-input-wrap">
         <svg class="cmd-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="11" cy="11" r="8"></circle>

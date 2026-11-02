@@ -51,7 +51,7 @@ async function initApp() {
 
   // 4. Configura eventos dos workspaces SIGTAP e Remessa
   bindSigtapEvents();
-  initRemessaView(false);
+  initRemessaView(false, true);
 
   // 5. Configura a barra lateral e filtros
   setupSidebar();
@@ -96,7 +96,11 @@ function handleCommandAction(action) {
   if (!action) return;
 
   if (action.type === 'nav') {
-    if (action.special === 'sigtap') {
+    if (action.special === 'home') {
+      switchWorkspace('home');
+      updateHash('#/inicio');
+      updateSidebarActiveState();
+    } else if (action.special === 'sigtap') {
       navigateToSpecial('sigtap');
     } else if (action.special === 'remessa') {
       navigateToSpecial('remessa');
@@ -119,7 +123,7 @@ function handleCommandAction(action) {
  */
 function parseHash() {
   const hash = window.location.hash.replace(/^#\/?/, '').trim();
-  if (!hash) return null;
+  if (!hash || hash === 'inicio') return { type: 'home' };
 
   if (hash === 'sigtap' || hash === 'workspace-sigtap') {
     return { type: 'special', special: 'sigtap' };
@@ -133,24 +137,30 @@ function parseHash() {
     const rawSub = parts.slice(1).join('/').replace(/\+/g, ' ');
     return {
       type: 'subgroup',
-      group: decodeURIComponent(parts[0].replace(/\+/g, ' ')),
-      sub: decodeURIComponent(rawSub)
+      group: safeDecode(parts[0].replace(/\+/g, ' ')),
+      sub: safeDecode(rawSub)
     };
   }
 
   return null;
 }
 
+function safeDecode(value) {
+  try { return decodeURIComponent(value); } catch (_) { return value; }
+}
+
 function updateHash(targetHash) {
   if (window.location.hash !== targetHash) {
-    history.replaceState(null, '', targetHash);
+    history.pushState(null, '', targetHash);
   }
 }
 
 function handleRoute() {
   const route = parseHash();
 
-  if (route && route.type === 'special') {
+  if (route && route.type === 'home') {
+    switchWorkspace('home');
+  } else if (route && route.type === 'special') {
     switchWorkspace(route.special);
     updateHash(`#/${route.special}`);
   } else if (route && route.type === 'subgroup') {
@@ -169,6 +179,7 @@ function handleRoute() {
   }
 
   updateSidebarActiveState();
+  closeMobileSidebar();
 }
 
 /**
@@ -177,6 +188,7 @@ function handleRoute() {
  */
 function switchWorkspace(wsName) {
   state.activeWorkspace = wsName;
+  document.getElementById('btnForceRefresh').hidden = wsName === 'home';
   closeAllPopovers();
 
   // Atualiza painéis ativos
@@ -189,7 +201,8 @@ function switchWorkspace(wsName) {
   document.querySelectorAll('.ws-tab').forEach(tab => {
     const isTabActive = tab.dataset.ws === wsName;
     tab.classList.toggle('active', isTabActive);
-    tab.setAttribute('aria-selected', isTabActive ? 'true' : 'false');
+    if (isTabActive) tab.setAttribute('aria-current', 'page');
+    else tab.removeAttribute('aria-current');
   });
 
   // Inicializa a view do workspace quando selecionado
@@ -199,6 +212,8 @@ function switchWorkspace(wsName) {
   } else if (wsName === 'remessa') {
     loadRemessas(false);
     announce('Acompanhamento de Remessas SIA aberto.');
+  } else if (wsName === 'home') {
+    announce('Início do Central SUS.');
   } else {
     announce(`Catálogo aberto: ${state.selectedSub}.`);
   }
@@ -233,12 +248,14 @@ function updateSidebarActiveState() {
       isActive = isSpecial === 'sigtap';
     } else if (state.activeWorkspace === 'remessa') {
       isActive = isSpecial === 'remessa';
-    } else {
+    } else if (state.activeWorkspace === 'catalog') {
       isActive = link.dataset.navGroup === state.selectedGroup &&
                  link.dataset.navSub === state.selectedSub;
     }
 
     link.classList.toggle('active', isActive);
+    if (isActive) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
   });
 }
 
@@ -246,8 +263,12 @@ function updateSidebarActiveState() {
  * Recarrega a tela ativa ignorando o cache do servidor.
  */
 function refreshActiveView() {
+  if (state.activeWorkspace === 'home') {
+    showToast('Escolha um sistema para atualizar seus arquivos.', 'info');
+    return;
+  }
   const icon = document.getElementById('iconRefresh');
-  if (icon) {
+  if (icon && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     icon.style.transform = 'rotate(360deg)';
     icon.style.transition = 'transform 500ms ease';
     setTimeout(() => {
@@ -282,7 +303,7 @@ function toggleTheme() {
 
   const metaTheme = document.getElementById('metaThemeColor');
   if (metaTheme) {
-    metaTheme.setAttribute('content', next === 'dark' ? '#0B0F17' : '#F6F7F9');
+    metaTheme.setAttribute('content', next === 'dark' ? '#182126' : '#F7F9FA');
   }
 
   const btn = document.getElementById('btnThemeToggle');
@@ -301,7 +322,8 @@ function loadSavedTheme() {
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       const metaTheme = document.getElementById('metaThemeColor');
-      if (metaTheme) metaTheme.setAttribute('content', '#0B0F17');
+      if (metaTheme) metaTheme.setAttribute('content', '#182126');
+      document.getElementById('btnThemeToggle')?.setAttribute('aria-label', 'Ativar modo claro');
     }
   } catch (_) {}
 }
@@ -316,11 +338,21 @@ function setupSidebar() {
   const btnCloseMobile = document.getElementById('btnCloseSidebarMobile');
   const backdrop = document.getElementById('sidebarBackdrop');
   const filterInput = document.getElementById('sidebarFilterInput');
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
+  const syncSidebar = () => {
+    if (mobileQuery.matches) layout.classList.remove('sidebar-collapsed');
+    closeMobileSidebar();
+  };
+  mobileQuery.addEventListener('change', syncSidebar);
+  syncSidebar();
 
   // Alternador Desktop (Recolhível 280px)
   if (btnToggleDesktop && layout) {
     btnToggleDesktop.addEventListener('click', () => {
       layout.classList.toggle('sidebar-collapsed');
+      const collapsed = layout.classList.contains('sidebar-collapsed');
+      document.getElementById('appSidebar').inert = collapsed;
+      btnToggleDesktop.setAttribute('aria-expanded', String(!collapsed));
     });
   }
 
@@ -329,6 +361,10 @@ function setupSidebar() {
     btnToggleMobile.addEventListener('click', () => {
       layout.classList.add('sidebar-mobile-open');
       btnToggleMobile.setAttribute('aria-expanded', 'true');
+      document.querySelector('.app-main-wrap').inert = true;
+      document.getElementById('appTopbar').inert = true;
+      document.getElementById('appSidebar').inert = false;
+      document.getElementById('btnCloseSidebarMobile').focus();
     });
   }
 
@@ -390,7 +426,12 @@ function closeMobileSidebar() {
   const layout = document.getElementById('appLayout');
   const btnToggleMobile = document.getElementById('btnToggleSidebarMobile');
   if (layout) {
+    const wasOpen = layout.classList.contains('sidebar-mobile-open');
     layout.classList.remove('sidebar-mobile-open');
+    document.querySelector('.app-main-wrap').inert = false;
+    document.getElementById('appTopbar').inert = false;
+    document.getElementById('appSidebar').inert = window.matchMedia('(max-width: 768px)').matches || layout.classList.contains('sidebar-collapsed');
+    if (wasOpen) btnToggleMobile?.focus();
   }
   if (btnToggleMobile) {
     btnToggleMobile.setAttribute('aria-expanded', 'false');
@@ -428,14 +469,20 @@ function setupGlobalListeners() {
 
   // Fecha popovers com ESC
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && document.getElementById('appLayout').classList.contains('sidebar-mobile-open')) {
+      const nodes = [...document.getElementById('appSidebar').querySelectorAll('a[href], button, input')].filter(el => el.getClientRects().length);
+      const first = nodes[0], last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+    }
     if (e.key === 'Escape') {
       closeAllPopovers(true);
+      closeMobileSidebar();
     }
     // Atalho Ctrl+[ para recolher sidebar no desktop
     if ((e.ctrlKey || e.metaKey) && e.key === '[') {
       e.preventDefault();
-      const layout = document.getElementById('appLayout');
-      if (layout) layout.classList.toggle('sidebar-collapsed');
+      document.getElementById('btnToggleSidebarDesktop')?.click();
     }
   });
 
@@ -456,7 +503,10 @@ function setupGlobalListeners() {
   if (homeLogo) {
     homeLogo.addEventListener('click', (e) => {
       e.preventDefault();
-      navigateToSubgroup(DEFAULT_GROUP, DEFAULT_SUB);
+      switchWorkspace('home');
+      updateHash('#/inicio');
+      updateSidebarActiveState();
+      closeMobileSidebar();
     });
   }
 
@@ -464,12 +514,21 @@ function setupGlobalListeners() {
   document.querySelectorAll('.ws-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const ws = tab.dataset.ws;
-      if (ws === 'sigtap' || ws === 'remessa') {
+      if (ws === 'home') {
+        switchWorkspace('home');
+        updateHash('#/inicio');
+        updateSidebarActiveState();
+        closeMobileSidebar();
+      } else if (ws === 'sigtap' || ws === 'remessa') {
         navigateToSpecial(ws);
       } else {
         navigateToSubgroup(state.selectedGroup, state.selectedSub);
       }
     });
+  });
+
+  document.getElementById('btnHomeSearch')?.addEventListener('click', () => {
+    document.getElementById('btnOpenCommandPalette').click();
   });
 
   // Botões de utilidades no topo

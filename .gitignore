@@ -60,3 +60,6 @@ htmlcov/
 .pytest_cache/
 
 .vercel
+
+# Python helpers (brand and source validation)
+__pycache__/

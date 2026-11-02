@@ -25,7 +25,7 @@ const SOURCE_LABELS = {
   HTTPS_BRIDGE: 'via ponte HTTPS',
   HTTPS_STREAM_BRIDGE: 'via ponte HTTPS',
   HTTPS_MIRROR: 'via ponte HTTPS',
-  READY: 'Catálogo Oficial',
+  READY: 'Catálogo DATASUS',
   OFFLINE: 'offline — dados em cache'
 };
 
@@ -107,7 +107,7 @@ function renderSubgroupHtml(container, data, activeUf, onNavigateSpecial) {
                   <p class="norm-title" style="margin-top:0.35rem;">${escapeHtml(n.title)}</p>
                 </div>
                 <a class="norm-link" href="${escapeHtml(n.url)}" ${external ? 'target="_blank" rel="noopener noreferrer"' : ''}>
-                  ${external ? 'Abrir referência oficial ↗' : 'Abrir no SUS-systems →'}
+                  ${external ? 'Abrir referência oficial ↗' : 'Abrir no Central SUS →'}
                 </a>
               </div>
             `;
@@ -139,7 +139,8 @@ function renderSubgroupHtml(container, data, activeUf, onNavigateSpecial) {
         ${files.length === 0 ? `
           <div class="state-box">Nenhum arquivo retornado neste diretório do FTP.</div>
         ` : `
-          <div class="table-scroll">
+          <p class="table-scroll-hint">Deslize para ver data, tamanho e versões anteriores.</p>
+          <div class="table-scroll" role="region" tabindex="0" aria-label="Arquivos de ${escapeHtml(sec.title)} — tabela com rolagem horizontal">
             <table class="data-table is-catalog ${showDesc ? 'has-desc' : ''}" id="${tableId}">
               <thead>
                 <tr>
@@ -200,7 +201,7 @@ function renderFileRow(f, ftpUrl, showDesc, activeUf, rowKey) {
       </td>
       <td class="mono-cell cell-date col-date">${modAt ? formatDateBR(modAt) : '–'}</td>
       <td class="mono-cell cell-size col-right">${sizeBytes ? formatSizeMB(sizeBytes) : '–'}</td>
-      <td class="col-right">
+      <td class="col-right cell-action">
         <div class="action-group">
           ${isUf ? `
             <select class="uf-select" aria-label="UF do arquivo ${escapeHtml(f.displayName)}">
@@ -258,7 +259,7 @@ function bindTableEvents(container, activeUf, onNavigateSpecial) {
     if (href.startsWith('#') && onNavigateSpecial) {
       a.addEventListener('click', (e) => {
         e.preventDefault();
-        onNavigateSpecial(href.replace(/^#\/?/, ''));
+        onNavigateSpecial(href.replace(/^#\/?/, '').replace(/^workspace-/, ''));
       });
     }
   });

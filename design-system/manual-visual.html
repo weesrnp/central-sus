@@ -1,0 +1,415 @@
+<!doctype html><html lang="pt-BR" data-hs-product="base" data-hs-theme="light" data-hs-density="comfortable"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>TI Saúde · Sistema de Design HS</title><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="components.css"><link rel="stylesheet" href="manual.css"></head><body class="hs-app"><header class="book-top"><strong>TI Saúde <span style="font-weight:400">/ Sistema de Design HS</span></strong><span class="edition">Honório Serpa/PR · 02/11/2026</span></header><div class="book-layout"><aside class="book-aside"><a href="#inicio"><strong>Visão geral</strong></a><a href="#laboratorio">Laboratório de interface</a><a href="#cores-visuais">Cores e códigos</a><a href="#tipografia-visual">Tipografia</a><a href="#referencias">Referência aprovada</a><small>Diretrizes completas</small><div class="toc">
+<ul>
+<li><a href="#ti-saude-sistema-de-design-hs">TI Saúde · Sistema de Design HS</a><ul>
+<li><a href="#1-para-que-serve">1. Para que serve</a></li>
+<li><a href="#2-direcao-visual-presenca-e-clareza">2. Direção visual: presença e clareza</a></li>
+<li><a href="#3-arquitetura-da-marca">3. Arquitetura da marca</a></li>
+<li><a href="#4-o-que-e-comum-e-o-que-pode-variar">4. O que é comum e o que pode variar</a></li>
+<li><a href="#5-cor-por-funcao">5. Cor por função</a></li>
+<li><a href="#6-tipografia-e-densidade">6. Tipografia e densidade</a></li>
+<li><a href="#7-espaco-forma-e-profundidade">7. Espaço, forma e profundidade</a></li>
+<li><a href="#8-componentes-e-comportamento">8. Componentes e comportamento</a></li>
+<li><a href="#9-icones-movimento-e-acessibilidade">9. Ícones, movimento e acessibilidade</a></li>
+<li><a href="#10-linguagem-da-interface">10. Linguagem da interface</a></li>
+<li><a href="#11-kit-tecnico-e-adocao">11. Kit técnico e adoção</a></li>
+<li><a href="#12-evolucao-do-padrao">12. Evolução do padrão</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<small>Reutilização</small><a href="#arquivos">Arquivos e modelos</a></aside><main class="book-main"><section class="cover" id="inicio"><span class="eyebrow">Manual de marca e interface · v1.0.0</span><h1>TI Saúde<br>Sistema de Design HS</h1><p>O seu ponto de partida para criar sistemas, extensões e aplicativos com a mesma família visual. Marca presente, leitura forte e informação bem organizada.</p><div class="cover-links"><a class="hs-btn hs-btn--primary" href="#laboratorio">Explorar os exemplos <svg class="hs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="hs-btn hs-btn--tonal" href="#documentacao">Ler as diretrizes</a></div></section><div class="family-grid"><article class="family"><img src="assets/marcas/hs-aps.svg" alt="Símbolo HS-APS"><h3>HS-APS</h3><p>Gestão da atenção primária</p><code>#0F294A · Jakarta</code></article><article class="family"><img src="assets/marcas/imuniza.svg" alt="Símbolo Imuniza HS"><h3>Imuniza HS</h3><p>Vacinação e busca ativa</p><code>#1E40AF · Outfit + Inter</code></article><article class="family"><img src="assets/marcas/acompanha.svg" alt="Símbolo Acompanha HS"><h3>Acompanha HS</h3><p>Apoio à consulta no prontuário</p><code>#4338CA · Jakarta</code></article></div><section class="visual-section" id="laboratorio"><div class="section-heading"><div><h2>Uma base, diferentes produtos</h2><p>Troque o perfil, o tema e a densidade. As regras de status permanecem.</p></div></div><div class="demo-controls hs-no-print" aria-label="Opções da demonstração">
+<label for="product">Perfil do produto<select id="product"><option value="base">Base · novo projeto</option><option value="hs-aps">HS-APS · gestão</option><option value="imuniza">Imuniza HS · vacinação</option><option value="acompanha">Acompanha HS · consultório</option></select></label>
+<label for="theme">Tema de referência<select id="theme"><option value="light">Claro</option><option value="dark">Escuro · base proposta</option></select></label>
+<label for="density">Densidade<select id="density"><option value="comfortable">Confortável</option><option value="compact">Compacta</option></select></label></div><div class="demo-frame" id="interface-demo">
+<header class="hs-header"><div class="demo-brand"><img id="demo-product-logo" src="assets/marcas/hs-aps.svg" alt="Símbolo do produto" hidden><span id="demo-product-name">TI Saúde · Exemplo de produto</span></div>
+<div class="demo-topline"><div><h3 class="hs-page-title">Painel de acompanhamento</h3><p class="hs-meta" style="margin:8px 0 0">Território de demonstração · dados fictícios</p></div><span class="hs-meta">Atualizado em 02/11/2026</span></div></header>
+<div class="hs-tabs demo-tabs" role="tablist" aria-label="Conteúdo do exemplo">
+<button class="hs-tab" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" tabindex="0">Visão geral</button>
+<button class="hs-tab" role="tab" id="tab-components" aria-controls="panel-components" aria-selected="false" tabindex="-1">Componentes</button>
+<button class="hs-tab" role="tab" id="tab-states" aria-controls="panel-states" aria-selected="false" tabindex="-1">Estados</button></div>
+<div class="demo-body" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
+<div class="hs-section-bar"><span class="hs-icon-box"><svg class="hs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8l10-5Z"/><path d="m2 12 10 5 10-5M2 16l10 5 10-5"/></svg></span><h4 class="hs-section-title">Resumo do território</h4></div>
+<div class="demo-body-grid">
+<div class="hs-card demo-kpi"><span class="hs-icon-box"><svg class="hs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><p class="hs-kpi">384</p><p>Pessoas acompanhadas</p></div></div>
+<div class="hs-card demo-kpi"><span class="hs-icon-box"><svg class="hs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></span><div><p class="hs-kpi">3</p><p>Equipes no exemplo</p></div></div>
+<div class="hs-card demo-kpi"><span class="hs-icon-box"><svg class="hs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><p class="hs-kpi">02/11</p><p>Última atualização</p></div></div></div>
+<form class="demo-filters" id="filters"><label class="hs-field" for="state-filter">Situação da sincronização<select class="hs-input" id="state-filter"><option value="all">Todas as equipes</option><option value="ok">Sincronizadas</option><option value="warning">Atualização pendente</option><option value="nd">Sem informação</option></select></label><button class="hs-btn hs-btn--primary" type="submit">Aplicar filtros</button><button class="hs-btn" type="button" id="clear-filters">Limpar</button></form>
+<div class="hs-table-region" tabindex="0" role="region" aria-label="Tabela de equipes fictícias"><table class="hs-table"><thead><tr><th scope="col">Equipe</th><th scope="col" class="hs-number">Pessoas</th><th scope="col">Sincronização</th></tr></thead><tbody id="demo-rows">
+<tr data-state="ok"><td>Equipe Exemplo A</td><td class="hs-number">128</td><td><span class="hs-badge" data-hs-status="ok">Sincronizada</span></td></tr>
+<tr data-state="warning"><td>Equipe Exemplo B</td><td class="hs-number">146</td><td><span class="hs-badge" data-hs-status="warning">Pendente</span></td></tr>
+<tr data-state="nd"><td>Equipe Exemplo C</td><td class="hs-number">110</td><td><span class="hs-badge" data-hs-status="nd">Sem informação</span></td></tr></tbody></table></div>
+<p class="demo-message" id="filter-result" role="status" aria-live="polite">Exemplo de interface: não representa uma consulta aos sistemas de saúde.</p></div>
+<div class="demo-body sample-stack" id="panel-components" role="tabpanel" aria-labelledby="tab-components" tabindex="0" hidden>
+<h4 class="hs-section-title">Mesma forma, papéis diferentes</h4><div class="row-wrap"><button type="button" class="hs-btn hs-btn--primary" disabled>Primário · exemplo</button><a class="hs-btn hs-btn--tonal" href="#tipografia-visual">Ver tipografia</a><button class="hs-pill" type="button" id="sample-pill" aria-pressed="false">Filtro selecionável</button></div><p class="hs-meta" id="pill-result" role="status">Ative o filtro de exemplo para observar o estado.</p>
+<div class="sample-grid"><div><label class="hs-field" for="input-example">Nome da lista<input class="hs-input" id="input-example" placeholder="Ex.: Acompanhamento mensal" aria-describedby="input-help"></label><p class="hs-help" id="input-help">Rótulo visível, campo sólido e foco identificável.</p></div><div><label class="hs-field" for="invalid-example">Período<input class="hs-input" id="invalid-example" value="" aria-invalid="true" aria-describedby="period-error"></label><p class="hs-error" id="period-error">Informe o período do relatório. Estado de erro demonstrativo.</p></div></div>
+<p class="hs-meta">O kit fornece estilos. O produto implementa validação, eventos e permissões.</p></div>
+<div class="demo-body sample-stack" id="panel-states" role="tabpanel" aria-labelledby="tab-states" tabindex="0" hidden>
+<h4 class="hs-section-title">Marca, categoria e estado separados</h4><div class="row-wrap"><span class="hs-badge" data-hs-status="ok">Em dia</span><span class="hs-badge" data-hs-status="warning">Atenção</span><span class="hs-badge" data-hs-status="danger">Em atraso</span><span class="hs-badge" data-hs-status="nd">Sem dados</span><span class="hs-badge" data-hs-status="info">Informação</span></div>
+<div class="hs-alert" data-hs-status="danger"><svg class="hs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m10.27 3.86-8.25 14.3A2 2 0 0 0 3.75 21h16.5a2 2 0 0 0 1.73-2.84L13.73 3.86a2 2 0 0 0-3.46 0Z"/><path d="M12 9v4M12 17h.01"/></svg><div><strong>Não foi possível atualizar</strong><div style="font-size:13px;margin-top:4px">Exemplo de falha técnica. Este resultado não informa o estado clínico da pessoa.</div></div></div>
+<div class="row-wrap" aria-label="Exemplos visuais do FAB"><span class="hs-fab" aria-label="Marca sem paciente">HS</span><span class="hs-fab" data-hs-status="ok" aria-label="Em dia">✓</span><span class="hs-fab" data-hs-status="warning" aria-label="Duas pendências em atenção">2</span><span class="hs-fab" data-hs-status="danger" aria-label="Três pendências críticas">3</span><span class="hs-fab" data-hs-status="nd" aria-label="Sem dados">–</span></div><p class="hs-meta">No produto, a regra de negócio escolhe o estado; o tema apresenta o resultado.</p></div></div></section><section class="visual-section" id="cores-visuais"><div class="section-heading"><div><h2>Paleta por função</h2><p>Valores do perfil e tema selecionados. A tabela completa está nas diretrizes e no JSON.</p></div></div><div class="swatch-grid" id="palette-sheet"><div class="swatch" data-token-color="identity"><div class="swatch-color"></div><div class="swatch-text"><strong>Identificação</strong><code></code><small>--hs-identity</small></div></div><div class="swatch" data-token-color="brand"><div class="swatch-color"></div><div class="swatch-text"><strong>Ação principal</strong><code></code><small>--hs-brand</small></div></div><div class="swatch" data-token-color="brand-hover"><div class="swatch-color"></div><div class="swatch-text"><strong>Interação</strong><code></code><small>--hs-brand-hover</small></div></div><div class="swatch" data-token-color="brand-strong"><div class="swatch-color"></div><div class="swatch-text"><strong>Texto de marca</strong><code></code><small>--hs-brand-strong</small></div></div><div class="swatch" data-token-color="brand-bg"><div class="swatch-color"></div><div class="swatch-text"><strong>Fundo tonal</strong><code></code><small>--hs-brand-bg</small></div></div><div class="swatch" data-token-color="brand-soft"><div class="swatch-color"></div><div class="swatch-text"><strong>Seleção</strong><code></code><small>--hs-brand-soft</small></div></div><div class="swatch" data-token-color="brand-line"><div class="swatch-color"></div><div class="swatch-text"><strong>Divisão de marca</strong><code></code><small>--hs-brand-line</small></div></div><div class="swatch" data-token-color="heading"><div class="swatch-color"></div><div class="swatch-text"><strong>Título</strong><code></code><small>--hs-heading</small></div></div><div class="swatch" data-token-color="canvas"><div class="swatch-color"></div><div class="swatch-text"><strong>Canvas</strong><code></code><small>--hs-canvas</small></div></div><div class="swatch" data-token-color="surface"><div class="swatch-color"></div><div class="swatch-text"><strong>Superfície</strong><code></code><small>--hs-surface</small></div></div><div class="swatch" data-token-color="ink"><div class="swatch-color"></div><div class="swatch-text"><strong>Texto principal</strong><code></code><small>--hs-ink</small></div></div><div class="swatch" data-token-color="muted"><div class="swatch-color"></div><div class="swatch-text"><strong>Texto auxiliar</strong><code></code><small>--hs-muted</small></div></div><div class="swatch" data-token-color="control-line"><div class="swatch-color"></div><div class="swatch-text"><strong>Borda de campo</strong><code></code><small>--hs-control-line</small></div></div><div class="swatch" data-token-color="ok-ink"><div class="swatch-color"></div><div class="swatch-text"><strong>Texto positivo</strong><code></code><small>--hs-ok-ink</small></div></div><div class="swatch" data-token-color="warning-ink"><div class="swatch-color"></div><div class="swatch-text"><strong>Texto de atenção</strong><code></code><small>--hs-warning-ink</small></div></div><div class="swatch" data-token-color="danger-ink"><div class="swatch-color"></div><div class="swatch-text"><strong>Texto crítico</strong><code></code><small>--hs-danger-ink</small></div></div></div></section><section class="visual-section" id="tipografia-visual"><div class="section-heading"><div><h2>Tipografia com hierarquia</h2><p>Escala confortável; a compacta é descrita no manual.</p></div></div><div class="hs-card" id="type-sheet"><p class="hs-meta" id="type-profile">Plus Jakarta Sans em títulos e corpo</p><div class="type-row"><div><small>Abertura</small><small>32 px · 800</small></div><p class="type-display">Tecnologia a serviço do cuidado</p></div><div class="type-row"><div><small>Título de página</small><small>24 px · 800</small></div><p class="type-page">Acompanhamento do território</p></div><div class="type-row"><div><small>KPI</small><small>28 px · 800 · tabular</small></div><p class="type-kpi">1.284 · 87,4%</p></div><div class="type-row"><div><small>Seção</small><small>18 px · 800</small></div><p class="type-section">Informações que orientam a ação</p></div><div class="type-row"><div><small>Corpo</small><small>15 px · 400 · 1,6</small></div><p class="type-body">A interface aproxima informação e ação com leitura clara e contexto.</p></div><div class="type-row"><div><small>Tabela / descrição</small><small>13 px · 400</small></div><p class="type-small">Equipe Exemplo A · Microárea 03 · Dados fictícios</p></div><div class="type-row"><div><small>Rótulo / legenda</small><small>12 px · 700</small></div><p class="type-label">ATUALIZADO EM 02/11/2026</p></div></div></section><section class="visual-section" id="referencias"><div class="section-heading"><div><h2>A referência que você aprovou</h2><p>Acompanha HS · da primeira aplicação à revisão com mais presença visual.</p></div></div><div class="refs-grid"><figure><a href="assets/referencias/acompanhahs-1.4.0-resumo.png"><img loading="lazy" src="assets/referencias/acompanhahs-1.4.0-resumo.png" alt="Primeira aplicação Acompanha 1.4.0 com superfícies e títulos mais neutros"></a><figcaption><strong>1.4.0 · primeira aplicação</strong><br>Marca consolidada, pouco contraste entre grupos e superfícies.</figcaption></figure><figure><a href="assets/referencias/acompanhahs-1.4.1-resumo.png"><img loading="lazy" src="assets/referencias/acompanhahs-1.4.1-resumo.png" alt="Revisão Acompanha 1.4.1 com cabeçalho lilás, títulos fortes e cards separados"></a><figcaption><strong>1.4.1 · direção aprovada</strong><br>Cabeçalho tonal, títulos profundos, navegação marcada e conteúdo separado.</figcaption></figure></div></section><article class="doc-body" id="documentacao"><h1 id="ti-saude-sistema-de-design-hs">TI Saúde · Sistema de Design HS</h1>
+<p>Versão 1.0.0 · 02 de novembro de 2026 · Honório Serpa/PR<br />
+Responsável: Weslei Neves · TI / Departamento de Saúde</p>
+<h2 id="1-para-que-serve">1. Para que serve</h2>
+<p>Este é o padrão de marca e interface para criar sistemas, extensões, aplicativos, SaaS e ferramentas do departamento. Ele reúne a família visual HS e a direção mais encorpada aprovada no Acompanha HS 1.4.1: presença de marca, leitura forte, divisões claras e informação clínica fácil de localizar.</p>
+<p>Um projeto novo começa com esta base. As decisões específicas ficam no <code>DESIGN.md</code> do produto: nome, finalidade, perfil de marca, densidade e componentes próprios. Não é necessário redesenhar a identidade a cada projeto.</p>
+<p>Este documento consolida referências existentes e propõe uma norma para trabalhos futuros. Não significa que todos os produtos já implementaram cada regra. As mudanças existentes e aprovadas no Acompanha são a referência de hierarquia; os perfis de outros produtos preservam suas identidades. Nenhuma aplicação foi modificada pela criação deste kit.</p>
+<h2 id="2-direcao-visual-presenca-e-clareza">2. Direção visual: presença e clareza</h2>
+<p><strong>A marca organiza. A superfície separa. O peso orienta. O status informa.</strong></p>
+<p>Uma interface deve permitir reconhecer o produto, identificar onde se está e encontrar a informação principal antes de ler os detalhes. A aparência tem presença por meio de cinco recursos recorrentes:</p>
+<ol>
+<li>Cabeçalho com fundo tonal de marca e um ponto de ancoragem forte: símbolo e título ou faixa superior de 4 px.</li>
+<li>Títulos escuros com peso 700/800; corpo regular; metadados com contraste suficiente. Tamanho sozinho não deve carregar toda a hierarquia.</li>
+<li>Navegação ativa com fundo tonal, peso maior e indicador de 3 px. Seleção também tem estado programático.</li>
+<li>Cards claros sobre um canvas levemente tingido; borda e sombra discretas separam conteúdo.</li>
+<li>Seções com ícone consistente e faixa tonal. Ícone branco em suporte de marca pode marcar grupos importantes; não precisa aparecer em todo subtítulo.</li>
+</ol>
+<p>Esses recursos são a tradução da revisão aprovada do Acompanha. A cor deve aparecer nos lugares de orientação, em vez de ficar restrita ao logo e ao botão principal. Evitar que fundo, cards, títulos e metadados tenham a mesma intensidade visual.</p>
+<p>Uma tela operacional começa pelo trabalho do usuário. Use título, contexto, filtros e conteúdo necessário; reserve banners grandes para entrada de produto e situações que realmente precisem deles. Não acrescentar slogans, hero decorativo ou cartões repetidos sem função.</p>
+<h2 id="3-arquitetura-da-marca">3. Arquitetura da marca</h2>
+<p><strong>TI Saúde</strong> identifica o padrão e a autoria técnica. <strong>Família HS</strong> reúne os produtos. O produto mantém nome e símbolo próprios. O Departamento de Saúde é o endosso institucional. Este kit não cria um novo brasão ou logotipo oficial do departamento.</p>
+<div class="doc-table-wrap"><table>
+<thead>
+<tr>
+<th>Produto</th>
+<th>Papel nas referências</th>
+<th>Cor de identificação</th>
+<th>Símbolo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HS-APS</td>
+<td>Gestão da atenção primária</td>
+<td>Navy <code>#0F294A</code></td>
+<td>Cruz modular</td>
+</tr>
+<tr>
+<td>Imuniza HS</td>
+<td>Vacinação e busca ativa</td>
+<td>Azul <code>#1E40AF</code></td>
+<td>Três casas preenchidas e uma em aberto</td>
+</tr>
+<tr>
+<td>Acompanha HS</td>
+<td>Apoio à consulta no prontuário</td>
+<td>Índigo <code>#4338CA</code></td>
+<td>Checklist com duas casas preenchidas e uma em aberto</td>
+</tr>
+</tbody>
+</table></div>
+<p>Somente esses três produtos aparecem como família nos quatro materiais analisados. Não se presume uma lista completa dos sistemas do departamento.</p>
+<h3 id="construcao-e-assinatura">Construção e assinatura</h3>
+<ul>
+<li>Malha do símbolo: 32 × 32 unidades, base quadrada com raio de 8 unidades. Módulos internos representam a função do produto. A geometria específica dos símbolos existentes deve ser preservada.</li>
+<li>Assinatura de Imuniza e Acompanha: nome + pequeno separador quadrado vermelho <code>#DC2626</code> + HS. O HS-APS mantém sua assinatura própria HS/APS; não renomear tudo para caber na fórmula.</li>
+<li>O separador vermelho e o módulo cívico do símbolo HS-APS são exceções institucionais explícitas. Não espalhar esse vermelho na interface como decoração.</li>
+<li>Para novos produtos municipais, preferir nome curto e descritivo acompanhado de HS. Produtos de alcance mais amplo podem usar outro nome, mantendo os fundamentos de interface e um perfil documentado.</li>
+<li>Não criar uma nova cor para cada módulo, aba ou especialidade. Um produto tem uma marca principal e suas rampas.</li>
+<li>Área de proteção adotada para a família: 60% da altura do símbolo ao redor da assinatura, derivada do material HS-APS. Esta extensão aos demais produtos é uma decisão desta consolidação.</li>
+<li>Usar SVG na interface e exportações próprias em 16/32/48/128 px para atalhos e extensões. Favicon pequeno exige desenho simplificado e revisão, não apenas redução automática.</li>
+<li>Assinaturas: horizontal para navegação; empilhada para login e apresentação; negativa para fundo escuro; monocromática para impressão. Não girar, deformar ou aplicar brilho/sombra ao logo. Sombra de card é um recurso separado.</li>
+<li>Android: preservar a área segura de 66 dp prevista no material do Imuniza e validar o adaptive icon nas máscaras do sistema.</li>
+</ul>
+<h3 id="endosso-e-autoria">Endosso e autoria</h3>
+<p>O símbolo do produto aparece na navegação, no favicon e no aplicativo. O logo do departamento aparece no rodapé do login, com referência de 44 px de altura e crédito: “Desenvolvido por Weslei Neves · TI / Departamento de Saúde de Honório Serpa/PR”. Em relatórios formais, o endosso institucional pode aparecer no cabeçalho junto da marca do produto, conforme a exigência do documento.</p>
+<p>A referência de 44 px segue o material visual original. Existe também indicação posterior de 32 px no DESIGN do Imuniza. Para este padrão, 44 px é a referência de login; variações compactas precisam constar no projeto. Em SaaS externo, autoria, órgão e marca do cliente devem refletir o contexto real.</p>
+<h2 id="4-o-que-e-comum-e-o-que-pode-variar">4. O que é comum e o que pode variar</h2>
+<div class="doc-table-wrap"><table>
+<thead>
+<tr>
+<th>Camada</th>
+<th>Conteúdo</th>
+<th>Regra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentos</td>
+<td>Papéis de cor, espaçamento, legibilidade, foco, ícones, estados e movimento</td>
+<td>Compartilhados por todos</td>
+</tr>
+<tr>
+<td>Perfil do produto</td>
+<td>Rampas de marca, símbolo, tipografia e densidade</td>
+<td>Escolhido no início, registrado no DESIGN local</td>
+</tr>
+<tr>
+<td>Componentes</td>
+<td>Botões, campos, abas, cards, tabelas e feedback</td>
+<td>Reutilizados por papel e comportamento</td>
+</tr>
+<tr>
+<td>Domínio</td>
+<td>Indicadores, faixas, regras clínicas, categorias e metas</td>
+<td>Definidos pelo sistema e sua fonte de negócio</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ordem de decisão: regra clínica e requisito de uso → este padrão comum → perfil do produto → exceção local documentada. Mudança visual não altera limiar, meta, cálculo ou significado clínico.</p>
+<h2 id="5-cor-por-funcao">5. Cor por função</h2>
+<h3 id="rampas-de-marca-tema-claro">Rampas de marca · tema claro</h3>
+<div class="doc-table-wrap"><table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Base nova / HS-APS¹</th>
+<th>Imuniza HS²</th>
+<th>Acompanha HS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificação / navy</td>
+<td><code>#0F294A</code></td>
+<td><code>#1E40AF</code></td>
+<td><code>#4338CA</code></td>
+</tr>
+<tr>
+<td>Ação principal</td>
+<td><code>#1D4ED8</code></td>
+<td><code>#1E40AF</code></td>
+<td><code>#4338CA</code></td>
+</tr>
+<tr>
+<td>Interação / texto forte de marca</td>
+<td><code>#1E40AF</code></td>
+<td><code>#1E3A8A</code></td>
+<td><code>#3730A3</code></td>
+</tr>
+<tr>
+<td>Fundo tonal</td>
+<td><code>#EFF6FF</code></td>
+<td><code>#EFF6FF</code></td>
+<td><code>#EEF2FF</code></td>
+</tr>
+<tr>
+<td>Seleção</td>
+<td><code>#DBEAFE</code></td>
+<td><code>#DBEAFE</code></td>
+<td><code>#E0E7FF</code></td>
+</tr>
+<tr>
+<td>Divisão de marca</td>
+<td><code>#BFDBFE</code></td>
+<td><code>#BFDBFE</code></td>
+<td><code>#C7D2FE</code></td>
+</tr>
+<tr>
+<td>Título</td>
+<td><code>#0F294A</code></td>
+<td><code>#172554</code></td>
+<td><code>#1E1B4B</code></td>
+</tr>
+<tr>
+<td>Canvas</td>
+<td><code>#F0F4F8</code></td>
+<td><code>#F0F4F8</code></td>
+<td><code>#F3F4FC</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>¹ Navy e azul de ação vêm do HS-APS; os demais papéis completam a rampa nesta consolidação. O perfil base usa essa direção para novos projetos sem marca definida. O uso do perfil não autoriza usar o logo HS-APS em outro produto.<br />
+² Marca e canvas preservam o Imuniza; a rampa tonal uniforme é proposta para o kit, não uma declaração de que cada página atual já a usa.</p>
+<p>Neutros compartilhados: texto <code>#0F172A</code>, secundário <code>#334155</code>, auxiliar <code>#475569</code>, superfície <code>#FFFFFF</code>, superfície secundária <code>#F8FAFC</code>, borda estrutural <code>#D8DFED</code>, borda de campo <code>#8492AB</code>. Cinza claro pode separar superfícies; informação necessária usa texto escuro. Bordas suaves de card não substituem bordas identificáveis de controle.</p>
+<h3 id="estado-e-categoria">Estado e categoria</h3>
+<div class="doc-table-wrap"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Sinal</th>
+<th>Fundo claro</th>
+<th>Texto claro</th>
+<th>Comunicação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Positivo</td>
+<td><code>#059669</code></td>
+<td><code>#ECFDF5</code></td>
+<td><code>#065F46</code></td>
+<td>Em dia, concluído, sincronizado</td>
+</tr>
+<tr>
+<td>Atenção</td>
+<td><code>#F59E0B</code></td>
+<td><code>#FFFBEB</code></td>
+<td><code>#92400E</code></td>
+<td>Pendência ou atenção definida pelo domínio</td>
+</tr>
+<tr>
+<td>Crítico / erro</td>
+<td><code>#DC2626</code></td>
+<td><code>#FEF2F2</code></td>
+<td><code>#991B1B</code></td>
+<td>Situação crítica calculada ou falha de operação</td>
+</tr>
+<tr>
+<td>Sem dados</td>
+<td><code>#64748B</code></td>
+<td><code>#F1F5F9</code></td>
+<td><code>#334155</code></td>
+<td>Ausência ou insuficiência de informação</td>
+</tr>
+<tr>
+<td>Informação</td>
+<td><code>#0891B2</code></td>
+<td><code>#ECFEFF</code></td>
+<td><code>#155E75</code></td>
+<td>Orientação informativa, sem gravidade</td>
+</tr>
+</tbody>
+</table></div>
+<p>Verde, âmbar e vermelho aparecem por significado, com texto ou ícone correspondente. Exportar, imprimir e abrir tela são ações de marca/tonais; sucesso de uma exportação pode receber feedback verde depois da confirmação. A variante destrutiva de botão é vermelha por indicar consequência real.</p>
+<p>O sinal âmbar não deve ser usado como texto pequeno sobre fundo claro. Use o tom escuro da coluna texto. Este kit também usa um verde escuro específico para texto branco no FAB positivo; não pressupõe que branco sobre o verde original satisfaça a meta de contraste.</p>
+<p><strong>Categoria não é estado.</strong> Gestante pode ter selo roxo (<code>#6D28D9</code> sobre <code>#F5F3FF</code>), puérpera pode usar teal; o estado de cada pessoa continua num selo separado. Não interpretar a categoria como urgência. No Acompanha, índigo identifica o produto; não passa a significar gestação.</p>
+<p><strong>Gráficos:</strong> use azul, índigo, ciano e violeta para séries, com legenda, rótulos e distinção de traço/forma. Rampa sequencial de azul representa magnitude; verde/âmbar/vermelho representam faixas somente quando o domínio define essas faixas. Não importar os limiares de cobertura do Imuniza para outro indicador. Sem dados usa uma representação explícita e não vira zero. Oferecer tabela ou valores textuais para gráficos decisivos.</p>
+<h3 id="tema-escuro">Tema escuro</h3>
+<p>O kit oferece uma base proposta: canvas <code>#0B1220</code>, superfície <code>#111C2F</code>, superfície secundária <code>#17243A</code>, texto <code>#F1F5F9</code>, auxiliar <code>#CBD5E1</code>, borda <code>#455770</code> e borda de campo <code>#7285A1</code>. Ações usam azul claro <code>#93C5FD</code> ou índigo claro <code>#A5B4FC</code> com texto escuro <code>#0B1220</code>. Superfícies de estado têm pares próprios, definidos em <code>tokens.css</code>.</p>
+<p>A marca original permanece no asset do logo; são os papéis de interface que mudam. Tema escuro exige verificação do conteúdo real, das camadas e dos gráficos. O Imuniza já tem tema próprio: aproveitar o mapeamento existente durante migração, em vez de sobrescrevê-lo cegamente com esta base.</p>
+<h2 id="6-tipografia-e-densidade">6. Tipografia e densidade</h2>
+<p><strong>Padrão de projeto novo:</strong> Plus Jakarta Sans para títulos e corpo. Ela reúne a direção do HS-APS e a hierarquia aprovada no Acompanha com uma única família. Usar fonte local com licença incluída. Fallback: Segoe UI, system-ui, sans-serif.</p>
+<p><strong>Perfil Imuniza:</strong> Outfit em títulos e KPIs; Inter em corpo, tabela e formulário. Esta combinação é parte da identidade existente. Não a trocar durante manutenção só para uniformizar a família.</p>
+<p><strong>Identificadores:</strong> fonte monoespaçada apenas em código e identificadores que se beneficiem de alinhamento. O HS-APS indica JetBrains Mono; o kit técnico usa fallback local ui-monospace/Consolas, sem afirmar que inclui JetBrains. Números de KPI usam <code>tabular-nums</code>.</p>
+<div class="doc-table-wrap"><table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Web / SaaS / aplicativo</th>
+<th>Painel compacto de extensão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Título de abertura</td>
+<td>32 / 800, opcional</td>
+<td>Não necessário</td>
+</tr>
+<tr>
+<td>Título de página</td>
+<td>24 / 700–800</td>
+<td>16 / 800</td>
+</tr>
+<tr>
+<td>KPI</td>
+<td>28 / 800</td>
+<td>Conforme necessidade, sem criar hero</td>
+</tr>
+<tr>
+<td>Seção</td>
+<td>18 / 700–800</td>
+<td>13 / 800</td>
+</tr>
+<tr>
+<td>Nome / subtítulo</td>
+<td>16 / 600–800</td>
+<td>13–16 / 700–800</td>
+</tr>
+<tr>
+<td>Corpo</td>
+<td>15 / 400, entrelinha 1,6</td>
+<td>13 / 400, entrelinha 1,45</td>
+</tr>
+<tr>
+<td>Texto secundário / tabela</td>
+<td>13 / 400–500</td>
+<td>12 / 500, entrelinha 1,4</td>
+</tr>
+<tr>
+<td>Rótulo / legenda</td>
+<td>12 / 600–700</td>
+<td>12 por padrão; 11 apenas na exceção abaixo</td>
+</tr>
+</tbody>
+</table></div>
+<p>Em projeto novo, 12 px é o mínimo de tela e texto necessário à decisão em campo deve ficar preferencialmente em 14–16 px. A extensão Acompanha 1.4.1 tem exceção existente de 11 px para rótulos curtos, códigos e metadados, nunca para corpo clínico. Essa exceção não deve se espalhar para os outros sistemas. Pesos permitidos: 400, 500, 600, 700 e 800. Evitar criar valores intermediários por componente.</p>
+<p>O modo compacto economiza espaço de interface, não remove informação. Fornecer expansão, quebra de linha e acesso ao texto completo quando necessário. Não truncar nome, dose ou aviso indispensável sem alternativa acessível.</p>
+<h2 id="7-espaco-forma-e-profundidade">7. Espaço, forma e profundidade</h2>
+<ul>
+<li>Unidade: 4 px. Escala de espaçamento: 4, 8, 12, 16, 24, 32 e 48 px.</li>
+<li>Web: padding de página 24–32, cards 20–24, intervalo entre blocos 24. Em celular: 16 na página e 16 no card.</li>
+<li>Extensão: padding de 12–16, intervalo de 8–12. Gaveta Acompanha: 510 px com máximo de 100% da viewport; popup: 320 px no contexto da extensão.</li>
+<li>Raios comuns: 6 em detalhe pequeno, 8 em componente compacto, 12 em campo, 16 em card principal e 9999 em pill. No perfil Acompanha, superfície e campo usam 8; pill mantém 9999.</li>
+<li>Cards têm borda fina e sombra leve. Não aplicar sombra em toda célula ou rótulo. Elevação maior é reservada para menu, modal e gaveta.</li>
+<li>Vidro fosco é uma opção do perfil Imuniza para KPI/destaque, com fundo de fallback sólido. Não é requisito da família. Tabelas, navegação e campos permanecem sólidos; medir contraste já composto se usar transparência.</li>
+<li>Barra de marca pode orientar cabeçalho ou seleção. Barra semântica lateral pode identificar um alerta, como no Acompanha. No Imuniza, respeitar o uso local mais restrito de barras laterais; não aplicar barras coloridas em todos os cards.</li>
+<li>Botões têm preenchimento sólido ou tonal. Gradiente não é necessário para dar presença; não usar gradiente em texto ou em botão novo. Sombras neutras são a base; a pequena sombra índigo do Acompanha fica como variação existente.</li>
+</ul>
+<h2 id="8-componentes-e-comportamento">8. Componentes e comportamento</h2>
+<h3 id="cabecalho-e-navegacao">Cabeçalho e navegação</h3>
+<p>Web: topbar de referência 64 px; sidebar 248 px, opção recolhida 76 px. Tela estreita troca a sidebar por gaveta com botão de abrir e fechar, fundo de bloqueio, gestão de foco e retorno ao acionador. Abaixo de 960 px é o breakpoint inicial, ajustável ao conteúdo.</p>
+<p>Abas: altura de referência 48 px, estado ativo com fundo, peso e indicador. Usar semântica de tabs quando alternarem painéis locais; links de navegação usam estado de página atual. Abas locais operam por teclado com setas, Home/End e estado selecionado. Evitar áreas fixas cobrindo foco ou conteúdo.</p>
+<h3 id="botoes">Botões</h3>
+<p>Pill, ícone Lucide opcional e verbo claro: Salvar, Aplicar filtros, Gerar relatório. Uma ação primária por tela; em um modal, uma primária própria para a tarefa modal. Tonal para exportar/imprimir; secundário para cancelar/limpar; ghost para ação discreta; danger para ação destrutiva.</p>
+<p>Alturas: 32 compacto, 40 padrão, 48 grande. Em contexto de toque/campo, alvo mínimo adotado de 44 × 44 px, inclusive botão só com ícone. Ícone sem texto precisa de nome acessível. Em processamento, indicar atividade, manter rótulo e evitar envio duplicado. Após terminar, comunicar sucesso ou erro; não ficar preso no estado carregando.</p>
+<h3 id="campos-e-filtros">Campos e filtros</h3>
+<p>Rótulo visível, campo branco/superfície sólida, borda identificável, ajuda quando necessária. Placeholder não substitui rótulo. Foco com outline visível; erro com texto associado ao campo, preservando o valor digitado. Checkbox/radio e select precisam de operação por teclado. Filtros ativos devem ser reconhecíveis e removíveis; pill que filtra usa estado pressionado/selecionado.</p>
+<h3 id="badges-chips-e-alertas">Badges, chips e alertas</h3>
+<p>Badge informa estado; pill selecionável filtra; chip lista um item ou filtro removível. Cada um tem comportamento próprio. Badge não deve parecer botão se não for acionável. Texto de estado vem da situação real; o tema só escolhe a apresentação. Distinguir pendência clínica, falha técnica, dados desatualizados e ausência de dados.</p>
+<p>Alertas têm título, explicação e próximo passo quando existir. Mensagem de falha de rede não pode fazer parecer que o paciente está em dia. Componentes de status são combináveis com o card e não substituem o título do conteúdo.</p>
+<h3 id="cards-kpis-e-tabelas">Cards, KPIs e tabelas</h3>
+<p>KPI tem valor, unidade, rótulo e contexto temporal. Só recebe estado se houver cálculo definido. Cor do ícone comum segue a marca; gestação pode usar categoria roxa sem colorir todo KPI como alerta.</p>
+<p>Tabela alinha números, mantém cabeçalho compreensível e diferencia ação de dado. Ordenação anuncia o estado. Em celular, permitir rolagem dentro da região da tabela ou representação em lista, mantendo o contexto; a página não deve transbordar. Não esconder colunas essenciais sem forma de consultá-las.</p>
+<h3 id="estados-obrigatorios">Estados obrigatórios</h3>
+<p>Para cada fluxo, prever: inicial, carregando, preenchido, vazio, erro, sem dados e indisponível quando aplicável. “Nenhum resultado para estes filtros” é diferente de “Não foi possível consultar”. Indicar atualização/fonte quando a atualidade muda a interpretação. Uma animação de skeleton não deve parecer dado real.</p>
+<h3 id="extensao-e-fab">Extensão e FAB</h3>
+<p>No Acompanha, sem paciente o FAB apresenta a marca; com paciente, apresenta status e quantidade. Sem dados tem sinal neutro, nunca verde. Estado crítico pode chamar atenção por até três ciclos; nada pulsa indefinidamente. Gaveta respeita teclado, foco, área útil e movimento reduzido. CSS da extensão deve ficar isolado, por exemplo em Shadow DOM; não sobrescrever o prontuário hospedeiro.</p>
+<h3 id="login-e-relatorios">Login e relatórios</h3>
+<p>Login prioriza marca do produto, formulário e feedback. Endosso fica no rodapé. Relatório deve funcionar em A4 e P&amp;B, com título, período, filtros, origem, atualização e paginação quando aplicável. Texto principal preto, fundo branco; faixas continuam compreensíveis por rótulo/forma. Não repetir automaticamente um cabeçalho de tela em PDF.</p>
+<h2 id="9-icones-movimento-e-acessibilidade">9. Ícones, movimento e acessibilidade</h2>
+<p>Lucide, grade de 24, traço 2, <code>currentColor</code>, tamanhos 16/20/24. Usar SVG local ou biblioteca já instalada; não carregar ícone remoto em tempo de uso. Evitar emojis em navegação, botões, selos e alertas. Símbolos de produto são assets de marca, separados dos ícones operacionais.</p>
+<p>Movimento: 150 ms para feedback; 300 ms para abertura/troca de contexto; entrada curta e discreta. Carregamento pode repetir enquanto a operação estiver em curso. Respeitar <code>prefers-reduced-motion</code>, cancelar animações decorativas e evitar que status crítico dependa da animação.</p>
+<p>Metas internas de revisão: contraste de texto pelo menos 4,5:1; informação gráfica e limites funcionais pelo menos 3:1; foco visível e operação por teclado. Medir os pares efetivamente renderizados em ambos os temas. Não considerar aprovação de uma amostra como certificação de acessibilidade do produto inteiro.</p>
+<p>Revisar em 360 px, em tamanho de desktop e com ampliação a 200%; menus/modais devem gerenciar foco e devolver o foco ao fechar. Cor nunca é a única forma de distinguir estado. Mensagens assíncronas usam anúncio acessível apropriado sem interromper toda a leitura. A documentação e demonstrações usam dados fictícios; não incorporar pacientes reais em capturas de design.</p>
+<h2 id="10-linguagem-da-interface">10. Linguagem da interface</h2>
+<p>Português claro e direto: “Salvar configurações”, “Não foi possível atualizar”, “Tentar novamente”. Especificar a ação que a pessoa pode executar. Manter termos clínicos corretos e nomes oficiais de indicadores. Não substituir a terminologia da API ou uma regra clínica por uma interpretação estética.</p>
+<p>Datas de tela: dd/mm/aaaa; horário de atualização visível onde necessário; número decimal com vírgula e unidade explícita. Períodos de relatório precisam estar definidos. Não colocar detalhes de framework, banco, token ou implementação em fluxos comuns; diagnóstico técnico fica na área apropriada.</p>
+<h2 id="11-kit-tecnico-e-adocao">11. Kit técnico e adoção</h2>
+<p>Arquivos incluídos:</p>
+<ul>
+<li><code>LEIA-ME.md</code>: entrada e roteiro rápido.</li>
+<li><code>manual-visual.html</code>: manual completo com amostras interativas de perfis, temas e densidade; funciona localmente sem rede.</li>
+<li><code>exemplo-interface.html</code> e <code>EXEMPLOS.md</code>: tela demonstrativa e índice das pranchas PNG de cores, tipografia e interfaces.</li>
+<li><code>tokens.css</code>: variáveis com prefixo <code>--hs-</code>, perfis e tema escuro proposto.</li>
+<li><code>tokens.json</code>: mesmos valores de cor, tipografia, espaço e forma para outros ambientes. JSON de aplicação próprio, sem alegação de formato universal de tokens.</li>
+<li><code>components.css</code>: base de referência em classes <code>hs-*</code>; não é biblioteca completa de comportamento.</li>
+<li><code>fonts.css</code> e <code>assets/</code>: fontes locais/licenças, símbolos existentes de Acompanha e Imuniza e capturas de referência do Acompanha aprovado.</li>
+<li><code>NOVO-PROJETO.md</code>: ficha para preencher e salvar como DESIGN do próximo produto.</li>
+<li><code>PROMPT-PARA-IA.md</code>: instrução pronta para reutilizar com assistentes.</li>
+<li><code>FONTES-E-DECISOES.md</code>: origem, diferenças resolvidas e limites.</li>
+<li><code>fontes.json</code>: inventário com hashes dos materiais consultados.</li>
+<li><code>validacao.json</code>: verificações executadas neste kit.</li>
+<li><code>VALIDACAO.md</code>: resumo legível das verificações e do seu escopo.</li>
+</ul>
+<h3 id="comecar-um-projeto">Começar um projeto</h3>
+<ol>
+<li>Copiar o kit para <code>design-system/</code> do novo projeto e escolher perfil: base, hs-aps, imuniza ou acompanha. Projeto novo sem identidade usa base, Jakarta e densidade confortável.</li>
+<li>Preencher <code>NOVO-PROJETO.md</code> com objetivo, público, identidade e exceções. Usar o prompt com a IA e fornecer acesso à pasta, não apenas o nome deste padrão.</li>
+<li>Carregar <code>fonts.css</code>, <code>tokens.css</code> e <code>components.css</code>, nessa ordem. Selecionar perfil com <code>data-hs-product</code> no elemento raiz; <code>data-hs-density="compact"</code> é opcional. Sem atributo, o padrão base já funciona.</li>
+<li>Adotar <code>data-hs-theme="dark"</code> somente após revisar o tema. O kit começa claro e não muda automaticamente pelo sistema operacional.</li>
+<li>Implementar semântica, eventos, validação, teclado e estados no framework do produto. HTML/React, Compose e outros ambientes devem compartilhar valores e comportamento, não depender das classes CSS em plataformas nativas.</li>
+<li>Revisar a tela principal, formulário, tabela, erro e vazio; testar larguras e contraste. Registrar evidências e desvios no DESIGN local.</li>
+</ol>
+<pre><code class="language-html">&lt;html lang=&quot;pt-BR&quot; data-hs-product=&quot;acompanha&quot; data-hs-density=&quot;compact&quot;&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;design-system/fonts.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;design-system/tokens.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;design-system/components.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body class=&quot;hs-app&quot;&gt;...&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Para migração, mapear tokens antigos para os papéis novos e revisar por tela, preservando comportamento. Não copiar uma folha global sobre aplicação existente sem verificar conflitos. Na extensão, aplicar tokens e classes dentro da raiz isolada; o seletor <code>[data-hs-root]</code> oferece base para esse contexto.</p>
+<h3 id="pronto-para-revisao">Pronto para revisão</h3>
+<ul>
+<li>Produto reconhecível, cabeçalho e seções com hierarquia, conteúdo principal legível.</li>
+<li>Marca, categoria e status com papéis distintos; nenhum cálculo alterado pelo tema.</li>
+<li>Botões, campos e navegação com foco e estados completos; uma ação principal clara.</li>
+<li>Layout funcional em 360 px e 200% de ampliação; alvos de toque adequados ao uso.</li>
+<li>Contraste medido em temas suportados; informação compreensível sem cor.</li>
+<li>Fontes/ícones locais e licenças incluídas; assets pequenos revisados; impressão legível.</li>
+<li>DESIGN do produto atualizado com versão do padrão, perfil e exceções.</li>
+</ul>
+<h2 id="12-evolucao-do-padrao">12. Evolução do padrão</h2>
+<p>Versão 1.0.0 é a consolidação inicial. Correção de exemplo ou documentação muda patch; componente/papel compatível muda minor; mudança incompatível de nome, token ou estrutura muda major. Produtos registram a versão adotada e migram de forma deliberada, sem sincronização automática.</p>
+<p>Uma exceção deve registrar: necessidade, escopo, valor/comportamento, evidência de uso e forma de revisão. O objetivo é reutilizar as decisões já tomadas e manter espaço para a necessidade real de cada ferramenta.</p></article><section class="visual-section" id="arquivos"><div class="section-heading"><h2>Pronto para reutilizar</h2></div><div class="file-list"><a href="DESIGN.md">Documento de referência<span>Marca, cores, tipografia, componentes e adoção.</span></a><a href="exemplo-interface.html">Exemplo de interface<span>Uma tela funcional de demonstração, sem dados reais.</span></a><a href="NOVO-PROJETO.md">Ficha de novo produto<span>Registre o perfil e as decisões do próximo sistema.</span></a><a href="PROMPT-PARA-IA.md">Instrução para a IA<span>Reutilize o padrão na próxima implementação.</span></a><a href="tokens.json">Tokens em JSON<span>Valores organizados para adaptação técnica.</span></a><a href="FONTES-E-DECISOES.md">Fontes e decisões<span>O que veio das referências e o que foi consolidado.</span></a><a href="assets/paleta-acompanha.png">Prancha de cores<span>Imagem com códigos da paleta Acompanha.</span></a><a href="assets/tipografia-base.png">Prancha de tipografia<span>Escala e pesos do perfil padrão.</span></a></div></section><footer class="book-foot">Weslei Neves · TI / Departamento de Saúde de Honório Serpa/PR<br>Consolidação 1.0.0 · Dados de demonstração fictícios · Fontes e licenças locais incluídas.</footer></main></div><script src="manual.js"></script></body></html>

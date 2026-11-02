@@ -98,7 +98,7 @@ async function fetchJson(url, options = {}) {
     }
     if (err.name === 'TypeError' && /failed to fetch|networkerror/i.test(err.message)) {
       reportNetworkMode('OFFLINE');
-      throw new Error('Falha de conexão com o servidor SUS-systems. Verifique se o container está ativo.');
+      throw new Error('Não foi possível conectar ao Central SUS. Verifique sua conexão e tente novamente.');
     }
     throw err;
   }

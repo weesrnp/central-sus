@@ -19,7 +19,7 @@ final class PageController
 
         $html = View::render('pages/home', [
             'catalog' => $catalogData,
-            'title' => 'SUS-systems — Central DataSUS, SIA, SIGTAP, CNES & e-SUS APS',
+            'title' => 'Central SUS — Arquivos, tabelas e remessas',
         ]);
 
         return new Response($html);
@@ -148,7 +148,7 @@ final class PageController
                                     ['title' => 'EQUIPES ESF BRASIL (CNES)', 'ftpUrl' => 'ftp://arpoador.datasus.gov.br/cnes/', 'includePrefixes' => ['EQUIPESESFBRASIL'], 'showNameFilter' => false],
                                 ],
                                 'normatives' => [
-                                    ['code' => 'BPA Consolidado (BPA-C) & Individualizado (BPA-I)', 'title' => 'Exportação magnética com validação obrigatória de CNS/CPF e CBO', 'tag' => 'Faturamento', 'url' => 'https://wiki.saude.gov.br/siasus/'],
+                                    ['code' => 'BPA Consolidado (BPA-C) & Individualizado (BPA-I)', 'title' => 'Exportação magnética com validação obrigatória de CNS/CPF e CBO', 'tag' => 'Faturamento', 'url' => 'https://wiki.saude.gov.br/sia/index.php/Portal_do_SIA'],
                                 ],
                             ],
                             [
@@ -372,7 +372,7 @@ final class PageController
                                     ['title' => 'Definições e Conversões para TabWin (DEF / CNV)', 'ftpUrl' => 'ftp://ftp.datasus.gov.br/dissemin/publicos/PNI/AUXILIARES/', 'showNameFilter' => true],
                                 ],
                                 'normatives' => [
-                                    ['code' => 'Calendário Nacional de Vacinação', 'title' => 'Esquema vigente do PNI no portal do Ministério da Saúde', 'tag' => 'PNI', 'url' => 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/calendario-nacional-de-vacinacao'],
+                                    ['code' => 'Calendário Nacional de Vacinação', 'title' => 'Esquema vigente do PNI no portal do Ministério da Saúde', 'tag' => 'PNI', 'url' => 'https://www.gov.br/saude/pt-br/vacinacao/calendario'],
                                     ['code' => 'SISVAN Web', 'title' => 'O SISVAN não publica arquivos no FTP; relatórios e acompanhamento ficam no sistema web', 'tag' => 'Nutrição', 'url' => 'https://sisaps.saude.gov.br/sisvan/'],
                                     ['code' => 'Condicionalidades do Bolsa Família', 'title' => 'Acompanhamento semestral de saúde dos beneficiários no e-Gestor AB', 'tag' => 'e-Gestor / PBF', 'url' => 'https://egestorab.saude.gov.br/'],
                                 ],

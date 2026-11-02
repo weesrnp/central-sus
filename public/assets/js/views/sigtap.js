@@ -63,6 +63,11 @@ export async function initSigtapView(force = false) {
 }
 
 export function bindSigtapEvents() {
+  const additional = ['sigtapGrupo', 'sigtapFin'].map(id => document.getElementById(id));
+  additional.forEach(field => field?.addEventListener('change', () => {
+    const count = additional.filter(el => el?.value).length;
+    document.getElementById('sigtapFiltersStatus').textContent = count ? `· ${count} ativo${count > 1 ? 's' : ''}` : '';
+  }));
   const btnSearch = document.getElementById('btnSigtapSearch');
   const btnDiff = document.getElementById('btnSigtapDiff');
   const queryInput = document.getElementById('sigtapQuery');
@@ -149,7 +154,7 @@ function renderSearchResults(container, data, query = '') {
       ${items.length === 0 ? `
         <div class="state-box">Nenhum procedimento encontrado com os filtros selecionados.</div>
       ` : `
-        <div class="table-scroll">
+        <p class="table-scroll-hint">Deslize para ver as outras colunas.</p><div class="table-scroll" role="region" tabindex="0" aria-label="Resultados — tabela com rolagem horizontal">
           <table class="data-table">
             <thead>
               <tr>
@@ -317,7 +322,7 @@ function diffBlockHtml({ title, total, shown, emptyText, headers, rows }) {
       ${shown === 0 ? `
         <div class="state-box">${escapeHtml(emptyText)}</div>
       ` : `
-        <div class="table-scroll">
+        <p class="table-scroll-hint">Deslize para ver as outras colunas.</p><div class="table-scroll" role="region" tabindex="0" aria-label="Resultados — tabela com rolagem horizontal">
           <table class="data-table">
             <thead><tr>${headers}</tr></thead>
             <tbody>${rows}</tbody>

@@ -931,7 +931,7 @@ button {
 .norm-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-hairline);
-  border-left: 3px solid var(--accent-primary);
+  border-left: 1px solid var(--accent-primary);
   border-radius: var(--radius-lg);
   padding: 1rem 1.15rem;
   display: flex;
@@ -1806,15 +1806,15 @@ button {
 }
 
 .toast.toast-success {
-  border-left: 4px solid var(--accent-emerald);
+  border-left: 1px solid var(--accent-emerald);
 }
 
 .toast.toast-error {
-  border-left: 4px solid var(--accent-crimson);
+  border-left: 1px solid var(--accent-crimson);
 }
 
 .toast.toast-info {
-  border-left: 4px solid var(--accent-primary);
+  border-left: 1px solid var(--accent-primary);
 }
 
 /* ==========================================================================

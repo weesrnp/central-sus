@@ -1,0 +1,71 @@
+[
+  {
+    "width": 1440,
+    "route": "#/inicio",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "#/SIA/BPA",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "#/sigtap",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "#/remessa",
+    "violations": []
+  },
+  {
+    "comparison": {
+      "totalNew": 5039,
+      "totalOld": 5024,
+      "addedCount": 17,
+      "removedCount": 2,
+      "valueChangedCount": 1,
+      "ruleChangedCount": 3
+    }
+  },
+  {
+    "width": 390,
+    "route": "#/inicio",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "#/SIA/BPA",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "#/sigtap",
+    "violations": []
+  },
+  {
+    "searchButtonBottom": 608.265625
+  },
+  {
+    "width": 390,
+    "route": "#/remessa",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "reducedMotion": true,
+    "consoleErrors": []
+  }
+]
