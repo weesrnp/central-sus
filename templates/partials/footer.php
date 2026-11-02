@@ -6,6 +6,6 @@
     <a href="https://sisaps.saude.gov.br/esus/" target="_blank" rel="noopener noreferrer">e-SUS APS</a>
     <a href="http://sigtap.datasus.gov.br/tabela-unificada/app/sec/inicio.jsp" target="_blank" rel="noopener noreferrer">SIGTAP Web</a>
     <a href="https://datasus.saude.gov.br/transferencia-de-arquivos/" target="_blank" rel="noopener noreferrer">Microdados</a>
-    <a href="https://github.com/weesrnp/SUS-systems" target="_blank" rel="noopener noreferrer">Sobre o projeto</a>
+    <a href="https://github.com/weesrnp/central-sus" target="_blank" rel="noopener noreferrer">Sobre o projeto</a>
   </nav>
 </div></footer>

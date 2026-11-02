@@ -2,7 +2,7 @@
 set -e
 
 echo "========================================================"
-echo "              SUS-systems 3.0 (PHP)"
+echo "              Central SUS 3.0 (PHP)"
 echo "========================================================"
 echo ""
 
@@ -23,7 +23,7 @@ if command -v docker >/dev/null 2>&1; then
     echo "[*] Container em execução. Abrindo navegador..."
     sleep 2
     open_browser
-    echo "[*] Pronto! SUS-systems ativo em http://localhost:8090"
+    echo "[*] Pronto! Central SUS ativo em http://localhost:8090"
     exit 0
 fi
 

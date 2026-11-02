@@ -1,4 +1,4 @@
-# SUS-systems 3.0 — Arquitetura PHP
+# Central SUS 3.0 — Arquitetura PHP
 
 Reescrita do backend FastAPI (`legacy-python/`) em **PHP 8.2+ sem framework**, para rodar
 em Docker, em hospedagem compartilhada (Apache + `.htaccess`) ou com `php -S`.
@@ -101,7 +101,7 @@ public function diff(string $compNew, string $compOld): array;
 
 ```bash
 docker compose up -d --build        # http://localhost:8090  (código montado ao vivo)
-docker exec sus-systems-app php tests/run.php
-docker exec sus-systems-app php -l src/Domain/Ftp/FtpClient.php
+docker exec central-sus-app php tests/run.php
+docker exec central-sus-app php -l src/Domain/Ftp/FtpClient.php
 ```
-Não há PHP instalado no host Windows — **use sempre o container** `sus-systems-app`.
+Não há PHP instalado no host Windows — **use sempre o container** `central-sus-app`.

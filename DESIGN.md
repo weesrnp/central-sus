@@ -9,13 +9,13 @@ Nome escolhido pelo responsável. Redesign implementado localmente, sem publica�
 - Tarefa prioritária: encontrar o material correto e baixar; pesquisar procedimentos, comparar competências e consultar processamento.
 - Público inferido das funções: profissionais de faturamento, cadastro, TI e gestão municipal. Não houve pesquisa formal com usuários.
 - Web responsiva para trabalho administrativo, com acesso público.
-- Repositório: https://github.com/weesrnp/SUS-systems. Base f413217.
+- Repositório: https://github.com/weesrnp/central-sus. Base f413217.
 - Kit original copiado integralmente em design-system/. Sua documentação não foi reescrita para adaptar este produto.
 - PHP, templates e JavaScript nativo. Sem novo framework ou dependências de produção para animações.
 
 ## Identidade
 
-- Nome público: **Central SUS**. Nome técnico do repositório: SUS-systems; namespace SusSystems e constante SUS_ROOT preservados.
+- Nome público: **Central SUS**. Repositório: central-sus; namespace SusSystems e constante SUS_ROOT preservados.
 - Descritor: **Arquivos, tabelas e remessas do SUS**.
 - Perfil: **base**, com exceção de paleta própria registrada abaixo, conforme rejeição explícita do navy pelo responsável.
 - Assinatura: Central SUS · Por Wees Dev. Ferramenta independente; não se atribui autoria ao Ministério da Saúde ou endosso municipal.

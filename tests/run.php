@@ -37,7 +37,7 @@ $failedCount = 0;
 $failures = [];
 $startTime = microtime(true);
 
-echo $colorBold . "SUS-systems — Suíte de Testes" . $colorReset . "\n";
+echo $colorBold . "Central SUS — Suíte de Testes" . $colorReset . "\n";
 if ($filter !== null) {
     echo "Filtro ativo: " . $colorDim . $filter . $colorReset . "\n";
 }

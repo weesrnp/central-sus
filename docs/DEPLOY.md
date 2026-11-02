@@ -1,6 +1,6 @@
-# Guia de Implantação e Deploy — SUS-systems 3.0
+# Guia de Implantação e Deploy — Central SUS 3.0
 
-Este documento reúne as diretrizes e modelos de configuração para implantação do **SUS-systems 3.0** em diferentes ambientes de hospedagem e produção.
+Este documento reúne as diretrizes e modelos de configuração para implantação do **Central SUS 3.0** em diferentes ambientes de hospedagem e produção.
 
 ---
 
@@ -50,11 +50,11 @@ environment:
 
 ## 3. Hospedagem Compartilhada (cPanel / Apache)
 
-O SUS-systems foi desenhado sem Composer ou frameworks pesados especificamente para rodar com excelência em servidores compartilhados.
+O Central SUS foi desenhado sem Composer ou frameworks pesados especificamente para rodar com excelência em servidores compartilhados.
 
 ### Passos de Instalação:
-1. Extraia o conteúdo do projeto no servidor (ex: `/home/usuario/sus-systems`).
-2. No painel cPanel (ou Plesk/DirectAdmin), configure o domínio ou subdomínio para apontar o **DocumentRoot** para a pasta `public/` (ex: `/home/usuario/sus-systems/public`).
+1. Extraia o conteúdo do projeto no servidor (ex: `/home/usuario/central-sus`).
+2. No painel cPanel (ou Plesk/DirectAdmin), configure o domínio ou subdomínio para apontar o **DocumentRoot** para a pasta `public/` (ex: `/home/usuario/central-sus/public`).
 3. O arquivo `public/.htaccess` já gerencia o roteamento completo:
    ```apache
    DirectoryIndex index.php
@@ -78,7 +78,7 @@ O SUS-systems foi desenhado sem Composer ou frameworks pesados especificamente p
 
 Para ambientes com tráfego elevado, a combinação Nginx com PHP-FPM oferece alta concorrência e excelente gerenciamento de streaming.
 
-### Configuração do VirtualHost (`/etc/nginx/sites-available/sus-systems.conf`)
+### Configuração do VirtualHost (`/etc/nginx/sites-available/central-sus.conf`)
 
 ```nginx
 server {
@@ -86,7 +86,7 @@ server {
     server_name sus.seudominio.gov.br;
 
     # O DocumentRoot DEVE apontar para public/
-    root /var/www/sus-systems/public;
+    root /var/www/central-sus/public;
     index index.php;
 
     charset utf-8;

@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 echo ========================================================
-echo               SUS-systems 3.0 (PHP)
+echo               Central SUS 3.0 (PHP)
 echo ========================================================
 echo.
 
@@ -35,7 +35,7 @@ if %ERRORLEVEL% equ 0 (
 
 echo [!] ERRO: Nem o Docker nem o executavel do PHP foram encontrados no PATH do Windows.
 echo.
-echo Para executar o SUS-systems, por favor:
+echo Para executar o Central SUS, por favor:
 echo   1. Instale o Docker Desktop: https://www.docker.com/products/docker-desktop
 echo   OU
 echo   2. Instale o PHP 8.2+: https://windows.php.net/download/

@@ -1,5 +1,5 @@
 /**
- * SUS-systems 3.0 — Aplicação Principal (Router & Estado Global).
+ * Central SUS 3.0 — Aplicação Principal (Router & Estado Global).
  * Módulo ES nativo sem ferramentas de build.
  */
 

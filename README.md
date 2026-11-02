@@ -81,7 +81,7 @@ Acesse no navegador:
 
 Para rodar os testes dentro do container:
 ```bash
-docker exec sus-systems-app php tests/run.php
+docker exec central-sus-app php tests/run.php
 ```
 
 ---
@@ -149,7 +149,7 @@ A API mantém total compatibilidade com o legado, respondendo tanto com prefixo 
 ## Estrutura de Pastas
 
 ```
-SUS-systems/
+Central SUS/
 ├── assets/                 # Imagens institucionais (banner, ilustrações)
 ├── config/                 # Configurações gerais, catálogo e mapeamento de rotas
 │   ├── app.php             # Variáveis de ambiente e parâmetros do sistema

@@ -1,4 +1,4 @@
-# SUS-systems 3.x — PHP 8.3 + Apache (extensões ftp, zip, curl)
+# Central SUS 3.x — PHP 8.3 + Apache (extensões ftp, zip, curl)
 FROM php:8.3-apache
 
 RUN apt-get update && apt-get install -y --no-install-recommends libzip-dev libcurl4-openssl-dev curl \

@@ -1,5 +1,5 @@
 /**
- * Cliente de API nativo para o SUS-systems 3.0.
+ * Cliente de API nativo para o Central SUS 3.0.
  * Faz requisições para os endpoints /api/* preservando os contratos do backend.
  */
 

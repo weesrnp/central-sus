@@ -1,11 +1,11 @@
-# Relatório de Garantia de Qualidade (QA) — SUS-systems 3.0
+# Relatório de Garantia de Qualidade (QA) — Central SUS 3.0
 
-**Data:** 29 de Outubro de 2026  
-**Ambiente de Testes:** Container Docker `sus-systems-app` (PHP 8.3 Apache)  
-**URL do Portal:** `http://localhost:8090`  
-**Portal Maestri:** `SUS App`  
-**Viewports Testados:** Desktop (1440×892 / 1900×1192) e Mobile (390×844)  
-**Responsável QA:** Midia  
+**Data:** 29 de Outubro de 2026
+**Ambiente de Testes:** Container Docker `central-sus-app` (PHP 8.3 Apache)
+**URL do Portal:** `http://localhost:8090`
+**Portal Maestri:** `SUS App`
+**Viewports Testados:** Desktop (1440×892 / 1900×1192) e Mobile (390×844)
+**Responsável QA:** Midia
 
 ---
 
@@ -68,10 +68,10 @@
   2. No menu lateral, navegar até `CNES` e clicar no subgrupo **"Base de dados"** ou **"Aplicativo SCNES"**.
   3. Ou navegar até `VIG_IMUNIZACAO_AMBIENTAL` e clicar em **"PNI (histórico)"**.
 - **Comportamento esperado:**
-  O sistema deve carregar os arquivos e seções do subgrupo normalmente, requisitando:  
+  O sistema deve carregar os arquivos e seções do subgrupo normalmente, requisitando:
   `GET /api/subgroup-data?group_id=CNES&sub_name=Base%20de%20dados`
 - **Comportamento obtido:**
-  O sistema exibe o card de erro:  
+  O sistema exibe o card de erro:
   `"Não foi possível carregar Base+de+dados. Subgrupo CNES / Base+de+dados não encontrado (404)."`
 - **Causa Raiz Identificada:**
   1. No template `templates/partials/sidebar.php`, o link é gerado com a função PHP `urlencode()`, que codifica espaços como sinal de mais: `href="#/CNES/Base+de+dados"`.
@@ -91,10 +91,10 @@
 
 ## 4. Validação em Produção Serverless (Vercel Preview)
 
-**Data:** 30 de Outubro de 2026  
-**Ambiente:** Vercel Serverless Functions (`vercel-php@0.7.4` / PHP 8.3.8) na região **São Paulo (`gru1`)**  
-**URL de Preview:** `https://sus-systems-git-feat-vercel-an-91ec9f-wesleis-projects-3b1e95bc.vercel.app/`  
-**Viewports:** Desktop (1440×892) e Mobile Pequeno (360×800)  
+**Data:** 30 de Outubro de 2026
+**Ambiente:** Vercel Serverless Functions (`vercel-php@0.7.4` / PHP 8.3.8) na região **São Paulo (`gru1`)**
+**URL de Preview:** `https://central-sus.vercel.app/`
+**Viewports:** Desktop (1440×892) e Mobile Pequeno (360×800)
 
 ### 4.1. Matriz de Testes em Produção Serverless
 

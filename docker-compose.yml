@@ -1,9 +1,9 @@
 services:
-  sus-systems:
+  central-sus:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    container_name: sus-systems-app
+    container_name: central-sus-app
     restart: unless-stopped
     ports:
       - "8090:80"

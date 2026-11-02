@@ -1,6 +1,6 @@
 > Registro histórico da primeira análise. Em 02/11/2026, o responsável escolheu **Central SUS** e solicitou uma nova paleta clara. As decisões atuais estão em `../DESIGN.md`.
 
-# Análise de nome e identidade · SUS-systems
+# Análise de nome e identidade · Central SUS
 
 02/11/2026 · Fonte do código: `f413217` da branch main. Análise de produto e design, sem implantação.
 
@@ -22,7 +22,7 @@ Arquitetura adequada a uma evolução visual incremental: templates PHP separado
 
 ## Observações do site publicado
 
-Naveguei em https://sus-systems.vercel.app/ e conferi:
+Naveguei em https://central-sus.vercel.app/ e conferi:
 
 - BPA: arquivos atuais, tamanhos, datas e controles de download; históricos oferecidos para BDSIA e equipes.
 - SIGTAP: carregamento da competência 10/2026, tabela de procedimentos e limite de 120 itens por consulta.
@@ -36,7 +36,7 @@ O funcionamento das consultas foi observado, mas os dados retornados não foram 
 
 ## Diagnóstico do nome
 
-“SUS-systems” combina uma sigla brasileira conhecida com um termo em inglês e pouco descritivo. Ele informa o universo temático, mas não explica a função do portal nem evidencia a autoria TI Saúde. Também pode soar como uma suíte que implementa os sistemas em si.
+O nome Central SUS foi escolhido para comunicar o acesso centralizado a materiais e consultas de sistemas públicos de saúde.
 
 Direção recomendada: nome curto em português + descritor funcional. A identidade pode manter o SUS no descritor e nos títulos de busca, mesmo quando ele não fizer parte da assinatura principal.
 

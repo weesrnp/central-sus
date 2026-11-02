@@ -1,4 +1,4 @@
-# Guia de Testes — SUS-systems 3.0
+# Guia de Testes — Central SUS 3.0
 
 O projeto utiliza uma suíte de testes unitários e de integração leve, **sem dependências externas** (sem PHPUnit ou Pest). Isso garante execução ultrarrápida, compatibilidade com qualquer ambiente PHP 8.2+ e zero overhead de instalação via Composer.
 
@@ -6,19 +6,19 @@ O projeto utiliza uma suíte de testes unitários e de integração leve, **sem 
 
 ## 1. Como Executar os Testes
 
-Como o PHP não está instalado nativamente na máquina host, utilize o container Docker `sus-systems-app` que já se encontra em execução:
+Como o PHP não está instalado nativamente na máquina host, utilize o container Docker `central-sus-app` que já se encontra em execução:
 
 ```bash
 # Executa todos os testes
-docker exec sus-systems-app php tests/run.php
+docker exec central-sus-app php tests/run.php
 
 # Executar filtrando por suíte ou nome de arquivo
-docker exec sus-systems-app php tests/run.php Core
-docker exec sus-systems-app php tests/run.php Sigtap
-docker exec sus-systems-app php tests/run.php Ftp
+docker exec central-sus-app php tests/run.php Core
+docker exec central-sus-app php tests/run.php Sigtap
+docker exec central-sus-app php tests/run.php Ftp
 
 # Executar filtrando por substring no nome do teste
-docker exec sus-systems-app php tests/run.php "404"
+docker exec central-sus-app php tests/run.php "404"
 ```
 
 No ambiente local ou CI com PHP 8.2+ instalado no PATH:
